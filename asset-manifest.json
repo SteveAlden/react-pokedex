@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-pokedex-carousel/static/css/main.d1b05096.chunk.css",
+    "main.js": "/react-pokedex-carousel/static/js/main.87d6210f.chunk.js",
+    "main.js.map": "/react-pokedex-carousel/static/js/main.87d6210f.chunk.js.map",
+    "runtime-main.js": "/react-pokedex-carousel/static/js/runtime-main.f0590e23.js",
+    "runtime-main.js.map": "/react-pokedex-carousel/static/js/runtime-main.f0590e23.js.map",
+    "static/js/2.66e45e15.chunk.js": "/react-pokedex-carousel/static/js/2.66e45e15.chunk.js",
+    "static/js/2.66e45e15.chunk.js.map": "/react-pokedex-carousel/static/js/2.66e45e15.chunk.js.map",
+    "index.html": "/react-pokedex-carousel/index.html",
+    "precache-manifest.b970504b3b81fad68e4f9802cdf683b0.js": "/react-pokedex-carousel/precache-manifest.b970504b3b81fad68e4f9802cdf683b0.js",
+    "service-worker.js": "/react-pokedex-carousel/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/react-pokedex-carousel/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.66e45e15.chunk.js.LICENSE.txt": "/react-pokedex-carousel/static/js/2.66e45e15.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f0590e23.js",
+    "static/js/2.66e45e15.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.87d6210f.chunk.js"
+  ]
+}
