@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-pokedex-carousel/static/css/main.d1b05096.chunk.css",
-    "main.js": "/react-pokedex-carousel/static/js/main.88dc398e.chunk.js",
-    "main.js.map": "/react-pokedex-carousel/static/js/main.88dc398e.chunk.js.map",
+    "main.js": "/react-pokedex-carousel/static/js/main.c382ef73.chunk.js",
+    "main.js.map": "/react-pokedex-carousel/static/js/main.c382ef73.chunk.js.map",
     "runtime-main.js": "/react-pokedex-carousel/static/js/runtime-main.f0590e23.js",
     "runtime-main.js.map": "/react-pokedex-carousel/static/js/runtime-main.f0590e23.js.map",
     "static/js/2.4c576391.chunk.js": "/react-pokedex-carousel/static/js/2.4c576391.chunk.js",
     "static/js/2.4c576391.chunk.js.map": "/react-pokedex-carousel/static/js/2.4c576391.chunk.js.map",
     "index.html": "/react-pokedex-carousel/index.html",
-    "precache-manifest.04224db163d1664e4320c11a4a97cab1.js": "/react-pokedex-carousel/precache-manifest.04224db163d1664e4320c11a4a97cab1.js",
+    "precache-manifest.7c2fe694036931a7d36a2a7059728ff6.js": "/react-pokedex-carousel/precache-manifest.7c2fe694036931a7d36a2a7059728ff6.js",
     "service-worker.js": "/react-pokedex-carousel/service-worker.js",
     "static/css/main.d1b05096.chunk.css.map": "/react-pokedex-carousel/static/css/main.d1b05096.chunk.css.map",
     "static/js/2.4c576391.chunk.js.LICENSE.txt": "/react-pokedex-carousel/static/js/2.4c576391.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.f0590e23.js",
     "static/js/2.4c576391.chunk.js",
     "static/css/main.d1b05096.chunk.css",
-    "static/js/main.88dc398e.chunk.js"
+    "static/js/main.c382ef73.chunk.js"
   ]
 }
