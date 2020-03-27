@@ -10,7 +10,8 @@ class Pokemon extends Component {
     return (
       <>
         <img
-          src={`https://res.cloudinary.com/aldencloud/image/upload/v1581096275/pokemon/poke-${pokemon}.png`}
+          // src={`https://res.cloudinary.com/aldencloud/image/upload/v1581096275/pokemon/poke-${pokemon}.png`}
+          src={`https://res.cloudinary.com/aldencloud/image/upload/v1581096275/pokemonpng/poke-${pokemon}.png`}
           // style={{
           //   // textAlign: 'center',
           //   // marginTop: '5%',

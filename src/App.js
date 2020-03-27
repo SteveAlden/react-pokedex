@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
-import Header from './Header';
+// import './App.css';
+import './index.css';
+import axios from 'axios';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
+import Header from './components/layouts/Header';
+// import Jumbo from './layouts/HeaderJumbo';
+import Footer from './components/layouts/Footer';
 // import DisplayImages from './Images';
 // import pngimg1 from './pokedex/1.png';
 // import pngimg2 from './pokedex/2.png';
@@ -8,8 +18,10 @@ import Header from './Header';
 // import pngimg4 from './pokedex/4.png';
 import Coverflow from 'react-coverflow';
 import { Container } from 'react-bootstrap';
-import PokeList from './PokeList';
-
+import PokeList from './components/pokemon/PokeList';
+import PokeListP from './components/pokemon/PokeListP';
+import DisplayPokemonBig from './components/pokemon/DisplayPokemonBig';
+import DisplayPokemon from './components/pokemon/DisplayPokemon';
 class App extends Component {
   state = {
     pokemons: [
@@ -164,8 +176,16 @@ class App extends Component {
       149,
       150,
       151
-    ]
+    ],
+    pokemonData: {}
   };
+  componentDidMount() {
+    axios
+      .get(
+        'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json'
+      )
+      .then(res => this.setState({ pokemonData: res.data }));
+  }
   render() {
     // return (
     //   <div className='App' style={{ backgroundColor: 'black' }}>
@@ -204,12 +224,41 @@ class App extends Component {
     //     </div>
     //   </div>
     // );
+    // return (
+    //   <div>
+    //     <Header />
+    //     {/* <Jumbo /> */}
+    //     <div style={{ marginTop: '85px' }}>
+    //       {/* <PokeList pokemons={this.state.pokemons} /> */}
+    //       <PokeListP pokemons={this.state.pokemons} />
+    //     </div>
+    //   </div>
+    // );
     return (
       <div>
         <Header />
-        <div style={{ marginTop: '85px' }}>
-          <PokeList pokemons={this.state.pokemons} />
-        </div>
+        <Router>
+          <Switch>
+            <Route
+              exact
+              path='/react-pokedex-carousel'
+              render={props => (
+                <>
+                  <div style={{ marginTop: '120px' }}>
+                    {/* <PokeList pokemons={this.state.pokemons} /> */}
+                    <PokeListP pokemons={this.state.pokemons} />
+                  </div>
+                </>
+              )}
+            />
+            <Route
+              path={`/pokemon/:id`}
+              render={props => <DisplayPokemon {...props} />}
+            ></Route>
+            <Redirect exact from='/' to='/react-pokedex-carousel' />
+          </Switch>
+        </Router>
+        <Footer />
       </div>
     );
   }
