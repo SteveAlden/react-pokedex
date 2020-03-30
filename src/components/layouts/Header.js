@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 
-function Header() {
+const Header = () => {
   return (
     <div className='center-navbar'>
       <Navbar
@@ -29,6 +29,6 @@ function Header() {
       </Navbar>
     </div>
   );
-}
+};
 
 export default Header;

@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
 
-function Footer() {
+const Footer = () => {
   return (
     <footer className='footer'>
       <Container fluid style={{ marginTop: '2vh' }}>
         <span>
           <p className='copyright' align='center'>
             &copy; {new Date().getFullYear()} S Steve Alden, all rights
-            reserved. Made with {/* ❤❤️ 💗*/}
+            reserved. Made with{' '}
             <img
               height='18px'
               alt='LOVE'
@@ -19,6 +19,6 @@ function Footer() {
       </Container>
     </footer>
   );
-}
+};
 
 export default Footer;

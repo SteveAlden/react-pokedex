@@ -29,7 +29,6 @@ class DisplayPokemon extends Component {
   shouldComponentUpdate(nextProps) {
     let newProp = nextProps.match.params.id;
     let thisProp = this.props.match.params.id;
-
     return thisProp === newProp || this.updateComponent(newProp);
   }
 
@@ -229,7 +228,11 @@ class DisplayPokemon extends Component {
       console.log('flavourText', flavourText);
     }
 
-    if ((this.props.match.params.id > 151) | (this.props.match.params.id < 1)) {
+    if (
+      isNaN(this.props.match.params.id) |
+      (this.props.match.params.id > 151) |
+      (this.props.match.params.id < 1)
+    ) {
       return <NotFoundPage />;
     }
     return (
