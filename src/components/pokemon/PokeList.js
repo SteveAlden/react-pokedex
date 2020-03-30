@@ -27,8 +27,8 @@ class PokeList extends Component {
           leaved={scaleDown.leaved}
           gutterWidth={15}
           gutterHeight={15}
-          appearDelay={80}
-          duration={200}
+          // appearDelay={80}
+          // duration={200}
         >
           {pokemon?.map(p => (
             <Pokemon poke={p} />
