@@ -36,8 +36,7 @@ class PokeList extends Component {
           gutterWidth={15}
           gutterHeight={15}
           appearDelay={80}
-          // rtl={true}
-          // duration={1000}
+          duration={200}
         >
           {pokemon?.map(p => (
             <Pokemon poke={p} />
@@ -45,7 +44,6 @@ class PokeList extends Component {
         </StackGrid>
       </>
     );
-    // return pokemon?.map(poke => <Pokemon pokemon={poke} />);
   }
 }
 
