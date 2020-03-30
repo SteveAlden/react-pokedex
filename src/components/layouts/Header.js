@@ -12,7 +12,7 @@ function Header() {
         }}
         variant='dark'
       >
-        <Nav.Link href='/react-pokedex-carousel'>
+        <Nav.Link href='/home'>
           <Navbar.Brand>
             <h3>
               <img
