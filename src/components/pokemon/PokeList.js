@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Pokemon from './Pokemon';
-// import Container from '@material-ui/core/Container';
-import { useMediaQuery } from 'react-responsive';
-import { CardDeck, Container } from 'react-bootstrap';
-import Coverflow from 'react-coverflow';
+import StackGrid, { transitions } from 'react-stack-grid';
+
+const { scaleDown, fadeDown, flip, helix } = transitions;
 
 // const isDesktop = useMediaQuery({ minWidth: 600 });
 
@@ -27,33 +26,23 @@ class PokeList extends Component {
 
     return (
       <>
-        <Container style={{ maxWidth: '100%', marginTop: '50px' }}>
-          <Coverflow
-            displayQuantityOfSide={3}
-            // navigation
-            // width='100%'
-            // height='80%'
-            infiniteScroll
-            // enableHeading
-            active={0}
-            // currentFigureScale={1}
-            // otherFigureScale={0.5}
-            media={{
-              '@media (max-width: 900px)': {
-                width: '100%',
-                height: '80vh'
-              },
-              '@media (min-width: 900px)': {
-                width: '100%',
-                height: '80vh'
-              }
-            }}
-          >
-            {pokemon?.map(p => (
-              <Pokemon poke={p} />
-            ))}
-          </Coverflow>
-        </Container>
+        <StackGrid
+          columnWidth={190}
+          appear={scaleDown.appear}
+          appeared={scaleDown.appeared}
+          enter={scaleDown.enter}
+          entered={scaleDown.entered}
+          leaved={scaleDown.leaved}
+          gutterWidth={15}
+          gutterHeight={15}
+          appearDelay={80}
+          // rtl={true}
+          // duration={1000}
+        >
+          {pokemon?.map(p => (
+            <Pokemon poke={p} />
+          ))}
+        </StackGrid>
       </>
     );
     // return pokemon?.map(poke => <Pokemon pokemon={poke} />);

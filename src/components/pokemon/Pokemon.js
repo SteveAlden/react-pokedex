@@ -1,32 +1,46 @@
 import React, { Component } from 'react';
-import { Card, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class Pokemon extends Component {
+  state = {
+    transform: 'scale(1.0)',
+    boxShadow: 'none'
+  };
+  onMouseOver = () => {
+    this.setState({
+      transform: 'scale(1.05)',
+      boxShadow: '0px 5px 15px 5px rgba(87,255,196,0.5)'
+    });
+  };
+  onMouseOut = () => {
+    this.setState({
+      transform: 'scale(1.0)',
+      boxShadow: 'none'
+    });
+  };
+  getStyle = () => {
+    return {
+      boxShadow: this.state.boxShadow,
+      transition: 'transform .2s',
+      transform: this.state.transform,
+      borderRadius: '20px'
+    };
+  };
   render() {
-    // console.log(this.props.pokemon);
     const pokemon = this.props.poke;
     console.log(pokemon);
-    // import pokeImg from `./pokedex/${pokemon}.png`;
     return (
-      <>
+      <Link style={{ textDecoration: 'none' }} to={`/pokemon/${pokemon}`}>
         <img
-          // src={`https://res.cloudinary.com/aldencloud/image/upload/v1581096275/pokemon/poke-${pokemon}.png`}
-          src={`https://res.cloudinary.com/aldencloud/image/upload/v1581096275/pokemonpng/poke-${pokemon}.png`}
-          // style={{
-          //   // textAlign: 'center',
-          //   // marginTop: '5%',
-          //   marginLeft: '50%',
-          //   transform: 'translate(-50%,-75%)',
-          //   marginBottom: '-50%'
-          // }}
-
+          src={`https://res.cloudinary.com/aldencloud/image/upload/v1581096275/pokemon/poke-${pokemon}.png`}
+          style={this.getStyle()}
           width='100%'
-          // style={{ boxShadow: '1px 1px 15px #888888' }}
-          // height={100}
-          // className='text-center mr-3'
-          // thumbnail
+          onMouseOver={this.onMouseOver}
+          onMouseOut={this.onMouseOut}
+          onTouchStart={this.onMouseOver}
+          onTouchEnd={this.onMouseOut}
         />
-      </>
+      </Link>
     );
   }
 }
