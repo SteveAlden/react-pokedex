@@ -188,7 +188,7 @@ class App extends Component {
           <Switch>
             <Route
               exact
-              path='/react-pokedex-carousel'
+              path='/home'
               render={props => (
                 <>
                   <div style={{ marginTop: '120px' }}>
@@ -201,7 +201,7 @@ class App extends Component {
               path={`/pokemon/:id`}
               render={props => <DisplayPokemon {...props} />}
             ></Route>
-            <Redirect exact from='/' to='/react-pokedex-carousel' />
+            <Redirect exact from='/' to='/home' />
             <Route path='*' exact={true} component={NotFoundPage} />
           </Switch>
         </Router>

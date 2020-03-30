@@ -6,10 +6,7 @@ class NotFoundPage extends React.Component {
   render() {
     return (
       <Container style={{ paddingTop: '150px' }} align='center'>
-        <Link
-          to='/react-pokedex-carousel'
-          style={{ textDecoration: 'none', color: 'white' }}
-        >
+        <Link to='/home' style={{ textDecoration: 'none', color: 'white' }}>
           <img
             width='80%'
             src='https://res.cloudinary.com/aldencloud/image/upload/v1585543806/404_notfound.png'
