@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
+const arrowColor = '#898989';
 class NavArrowLeft extends Component {
   state = {
-    evWidth: '30%',
-    transform: 'scale(1.0)',
-    color: '#898989'
+    transform: 'scale(1.0)'
   };
+
   onMouseOver = () => {
     this.setState({
-      transform: 'scale(1.2)'
-      // color: '#454545'
+      transform: 'scale(1.3)'
     });
   };
+
   onMouseOut = () => {
     this.setState({
       transform: 'scale(1.0)'
-      // color: '#898989'
     });
   };
 
@@ -25,9 +25,10 @@ class NavArrowLeft extends Component {
       fontSize: '56px',
       transition: 'transform .1s',
       transform: this.state.transform,
-      color: this.state.color
+      color: arrowColor
     };
   };
+
   createArrowIcon = pokeId => {
     return (
       <Link style={{ textDecoration: 'none' }} to={`/pokemon/${pokeId}`}>
@@ -50,20 +51,18 @@ class NavArrowLeft extends Component {
 
 class NavArrowRight extends Component {
   state = {
-    evWidth: '30%',
-    transform: 'scale(1.0)',
-    color: '#898989'
+    transform: 'scale(1.0)'
   };
+
   onMouseOver = () => {
     this.setState({
-      transform: 'scale(1.2)'
-      // color: '#454545'
+      transform: 'scale(1.3)'
     });
   };
+
   onMouseOut = () => {
     this.setState({
       transform: 'scale(1.0)'
-      // color: '#898989'
     });
   };
 
@@ -73,9 +72,10 @@ class NavArrowRight extends Component {
       fontSize: '56px',
       transition: 'transform .1s',
       transform: this.state.transform,
-      color: this.state.color
+      color: arrowColor
     };
   };
+
   createArrowIcon = pokeId => {
     return (
       <Link style={{ textDecoration: 'none' }} to={`/pokemon/${pokeId}`}>

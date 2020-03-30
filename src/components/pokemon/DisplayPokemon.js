@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Container from 'react-bootstrap/Container';
-import { Row, Col, ProgressBar } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import Evolutions from '../helpers/Evolutions';
 import { Chip } from '@material-ui/core';
 import Stats from '../helpers/Stats';
-import { Link } from 'react-router-dom';
 import { NavArrowLeft, NavArrowRight } from '../helpers/NavArrows';
+import NotFoundPage from '../../components/NotFound';
 
 class DisplayPokemon extends Component {
   constructor(props) {
@@ -23,24 +22,17 @@ class DisplayPokemon extends Component {
       bodyColor: '#252525',
       mediaColor: '#363636',
       bgColor: 'rgb(25, 25, 25)',
-      border: '5px solid rgb(15, 15, 15)',
-      leftArrowColor: '#898989',
-      rightArrowColor: '#898989',
-      // transition: 'transform .2s',
-      leftArrowTransform: 'scale(1.0)',
-      rightArrowTransform: 'scale(1.0)'
+      border: '5px solid rgb(15, 15, 15)'
     };
   }
+
   shouldComponentUpdate(nextProps) {
     let newProp = nextProps.match.params.id;
     let thisProp = this.props.match.params.id;
-    if ((thisProp > 151) | (thisProp < 1)) {
-      return (window.location.href = '/');
-    }
-    return (
-      this.props.match.params.id === newProp || this.updateComponent(newProp)
-    );
+
+    return thisProp === newProp || this.updateComponent(newProp);
   }
+
   updateComponent = newId => {
     let pokeGitUrl =
       'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json';
@@ -48,6 +40,7 @@ class DisplayPokemon extends Component {
 
     const pokeGitData = axios.get(pokeGitUrl);
     const pokeApiData = axios.get(pokeApiUrl);
+
     axios
       .all([pokeGitData, pokeApiData])
       .then(
@@ -66,13 +59,7 @@ class DisplayPokemon extends Component {
               )
             );
 
-          console.log(
-            // responseOne,
-            // responseTwo,
-            species,
-            species.url,
-            this.state.speciesDescription
-          );
+          console.log(species, species.url, this.state.speciesDescription);
         })
       )
       .catch(errors => {
@@ -80,66 +67,52 @@ class DisplayPokemon extends Component {
         console.error(errors);
       });
   };
+
   componentDidMount() {
     this.updateComponent(this.props.match.params.id);
   }
+
   getChipStyle = pokeType => {
     switch (pokeType) {
       case 'Bug':
         return '#C3D21F';
-
       case 'Dark':
         return '#8E6956';
-
       case 'Dragon':
         return '#8774FF';
-
       case 'Electric':
         return '#FDE53D';
-
       case 'Fairy':
         return '#F9ADFF';
-
       case 'Fighting':
         return '#A85643';
-
       case 'Fire':
         return '#FA5643';
-
       case 'Flying':
         return '#79A4FF';
-
       case 'Ghost':
         return '#7873D4';
-
       case 'Grass':
         return '#8DD851';
-
       case 'Ground':
         return '#EDCC56';
-
       case 'Ice':
         return '#96F1FF';
-
       case 'Normal':
         return '#BDBDAE';
-
       case 'Poison':
         return '#AB5DA2';
-
       case 'Psychic':
         return '#F662B1';
-
       case 'Rock':
         return '#CDBD72';
-
       case 'Stell':
         return '#C4C2DB';
-
       case 'Water':
         return '#56AEFF';
     }
   };
+
   createRowCol = (col1, col2) => {
     return (
       <h5>
@@ -150,6 +123,7 @@ class DisplayPokemon extends Component {
       </h5>
     );
   };
+
   getDivStyle = style => {
     switch (style) {
       case 'filled':
@@ -164,7 +138,6 @@ class DisplayPokemon extends Component {
         return {
           padding: '2vh 5vw 1vh 5vw',
           border: '5px solid rgb(25, 25, 25)',
-          // backgroundColor: this.state.bgColor,
           borderRadius: '12px'
         };
       case 'stats':
@@ -186,13 +159,10 @@ class DisplayPokemon extends Component {
           <div style={this.getDivStyle('filled')}>
             <h3>Evolutions</h3>
             {preEv?.map(t => (
-              // this.createEvolutionImage(t?.num?.replace(/^0+/, ''))
               <Evolutions imageid={t?.num?.replace(/^0+/, '')} />
             ))}
-            {/* {this.createEvolutionImage(this.props.match.params.id)} */}
             <Evolutions imageid={this.props.match.params.id} />
             {nexEv?.map(t => (
-              // this.createEvolutionImage(t?.num?.replace(/^0+/, ''))
               <Evolutions imageid={t?.num?.replace(/^0+/, '')} />
             ))}
           </div>
@@ -203,10 +173,9 @@ class DisplayPokemon extends Component {
           <div style={this.getDivStyle('filled')}>
             <h3>Evolutions</h3>
             {preEv?.map(t => (
-              // this.createEvolutionImage(t?.num?.replace(/^0+/, ''))
               <Evolutions imageid={t?.num?.replace(/^0+/, '')} />
             ))}
-            {/* {this.createEvolutionImage(this.props.match.params.id)} */}
+
             <Evolutions imageid={this.props.match.params.id} />
           </div>
         );
@@ -216,10 +185,8 @@ class DisplayPokemon extends Component {
       return (
         <div style={this.getDivStyle('filled')}>
           <h3>Evolutions</h3>
-          {/* {this.createEvolutionImage(this.props.match.params.id)} */}
           <Evolutions imageid={this.props.match.params.id} />
           {nexEv?.map(t => (
-            // this.createEvolutionImage(t?.num?.replace(/^0+/, ''))
             <Evolutions imageid={t?.num?.replace(/^0+/, '')} />
           ))}
         </div>
@@ -247,14 +214,11 @@ class DisplayPokemon extends Component {
       pokemonDisplay = pokemon?.find(
         poke => poke.id == this.props.match.params.id
       );
-      // console.log(pokemonDisplay);
-      // console.log(pokemon);
     } else {
       console.log('no data');
     }
     // destructure description from species
     let flavourText;
-    // let flavor_text;
     if (this.state?.speciesDescription) {
       let { flavor_text_entries } = this.state?.speciesDescription;
       flavourText = flavor_text_entries?.find(
@@ -265,22 +229,20 @@ class DisplayPokemon extends Component {
       console.log('flavourText', flavourText);
     }
 
+    if ((this.props.match.params.id > 151) | (this.props.match.params.id < 1)) {
+      return <NotFoundPage />;
+    }
     return (
       <Container
-        // fluid
         style={{
-          // paddingBottom: '10vh',
           marginTop: '10vh',
-          // marginBottom: '20px',
           color: this.state.textColor
-          // backgroundColor: this.state.bodyColor
         }}
       >
         <Row>
           <img
             width='50%'
             className='mr-auto'
-            // class='align-self-center"'
             src={`https://res.cloudinary.com/aldencloud/image/upload/v1584876602/pokemonpng/poke-${this.props.match.params.id}.png`}
             alt='Generic placeholder'
             style={{ margin: 'auto' }}
@@ -329,29 +291,13 @@ class DisplayPokemon extends Component {
             {this.createRowCol('Spawn time :', pokemonDisplay?.spawn_time)}
           </div>
           <br />
-          <div
-            // className='mr-auto'
-            style={this.getDivStyle('stats')}
-          >
+          <div style={this.getDivStyle('stats')}>
             <h3>Base Stats</h3>
             <Stats stats={this.state?.pokeApiData?.stats} />
           </div>
           <br />
-          <div
-            // className='mr-auto'
-            style={this.getDivStyle('filled')}
-          >
+          <div style={this.getDivStyle('filled')}>
             <h3>Weakness</h3>
-            {/* {this.getStat()} */}
-
-            {/* <ProgressBar
-              now={60}
-              style={{
-                color: 'black',
-                backgroundImage:
-                  'linear-gradient(to right, rgba(42,187,239,1) 0%, rgba(239,9,105,1) 100%'
-              }}
-            /> */}
             {pokemonDisplay?.weaknesses?.map(t => (
               <>
                 <Chip
@@ -363,13 +309,9 @@ class DisplayPokemon extends Component {
               </>
             ))}
           </div>
-
           <br />
-
           {this.getEvolutions(pokemonDisplay)}
         </div>
-
-        {/* </Card> */}
       </Container>
     );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-// import PageNotFound from '../assets/images/PageNotFound';
+
 class NotFoundPage extends React.Component {
   render() {
     return (
