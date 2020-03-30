@@ -32,8 +32,8 @@ class Pokemon extends Component {
     return (
       <Link style={{ textDecoration: 'none' }} to={`/pokemon/${pokemon}`}>
         <img
-          // src={`https://res.cloudinary.com/aldencloud/image/upload/v1581096275/pokemon/poke-${pokemon}.png`}
-          src={`${process.env.PUBLIC_URL}/assets/pokemonImages/${pokemon}.png`}
+          src={`https://res.cloudinary.com/aldencloud/image/upload/v1581096275/pokemon/poke-${pokemon}.png`}
+          // src={`${process.env.PUBLIC_URL}/assets/pokemonImages/${pokemon}.png`}
           style={this.getStyle()}
           width='100%'
           onMouseOver={this.onMouseOver}
