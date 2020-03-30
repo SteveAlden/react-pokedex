@@ -201,8 +201,8 @@ class App extends Component {
               path={`/pokemon/:id`}
               render={props => <DisplayPokemon {...props} />}
             ></Route>
-            <Route path='*' exact={true} component={NotFoundPage} />
             <Redirect exact from='/' to='/react-pokedex-carousel' />
+            <Route path='*' exact={true} component={NotFoundPage} />
           </Switch>
         </Router>
         <Footer />
