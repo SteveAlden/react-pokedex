@@ -22,7 +22,7 @@
     "react-sticky-footer": "0.1.0-rc3",
     "typeface-roboto": "0.0.75"
   },
-  "homepage": "http://stevealden.github.io/react-pokedex-carousel",
+  "homepage": "http://stevealden.github.io/home",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
