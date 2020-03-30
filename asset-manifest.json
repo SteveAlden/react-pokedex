@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/react-pokedex-carousel/static/css/main.2af4faeb.chunk.css",
-    "main.js": "/react-pokedex-carousel/static/js/main.89d37ba8.chunk.js",
-    "main.js.map": "/react-pokedex-carousel/static/js/main.89d37ba8.chunk.js.map",
-    "runtime-main.js": "/react-pokedex-carousel/static/js/runtime-main.f0590e23.js",
-    "runtime-main.js.map": "/react-pokedex-carousel/static/js/runtime-main.f0590e23.js.map",
-    "static/js/2.98400a06.chunk.js": "/react-pokedex-carousel/static/js/2.98400a06.chunk.js",
-    "static/js/2.98400a06.chunk.js.map": "/react-pokedex-carousel/static/js/2.98400a06.chunk.js.map",
-    "index.html": "/react-pokedex-carousel/index.html",
-    "precache-manifest.40faea5520380cc7b72c6916ca710289.js": "/react-pokedex-carousel/precache-manifest.40faea5520380cc7b72c6916ca710289.js",
-    "service-worker.js": "/react-pokedex-carousel/service-worker.js",
-    "static/css/main.2af4faeb.chunk.css.map": "/react-pokedex-carousel/static/css/main.2af4faeb.chunk.css.map",
-    "static/js/2.98400a06.chunk.js.LICENSE.txt": "/react-pokedex-carousel/static/js/2.98400a06.chunk.js.LICENSE.txt"
+    "main.css": "/home/static/css/main.08244ddf.chunk.css",
+    "main.js": "/home/static/js/main.1fc00f71.chunk.js",
+    "main.js.map": "/home/static/js/main.1fc00f71.chunk.js.map",
+    "runtime-main.js": "/home/static/js/runtime-main.d243344e.js",
+    "runtime-main.js.map": "/home/static/js/runtime-main.d243344e.js.map",
+    "static/js/2.0fa8969b.chunk.js": "/home/static/js/2.0fa8969b.chunk.js",
+    "static/js/2.0fa8969b.chunk.js.map": "/home/static/js/2.0fa8969b.chunk.js.map",
+    "index.html": "/home/index.html",
+    "precache-manifest.4fdf9a7d8429c0b0b990734c93f25651.js": "/home/precache-manifest.4fdf9a7d8429c0b0b990734c93f25651.js",
+    "service-worker.js": "/home/service-worker.js",
+    "static/css/main.08244ddf.chunk.css.map": "/home/static/css/main.08244ddf.chunk.css.map",
+    "static/js/2.0fa8969b.chunk.js.LICENSE.txt": "/home/static/js/2.0fa8969b.chunk.js.LICENSE.txt",
+    "static/media/Oxanium-Regular.ttf": "/home/static/media/Oxanium-Regular.f561c6cc.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.f0590e23.js",
-    "static/js/2.98400a06.chunk.js",
-    "static/css/main.2af4faeb.chunk.css",
-    "static/js/main.89d37ba8.chunk.js"
+    "static/js/runtime-main.d243344e.js",
+    "static/js/2.0fa8969b.chunk.js",
+    "static/css/main.08244ddf.chunk.css",
+    "static/js/main.1fc00f71.chunk.js"
   ]
 }
