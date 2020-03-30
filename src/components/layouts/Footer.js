@@ -8,7 +8,7 @@ class Footer extends Component {
       <footer className='footer'>
         <Container fluid style={{ marginTop: '2vh' }}>
           <span>
-            <p className='copyright pull-right' align='center'>
+            <p className='copyright' align='center'>
               &copy; {new Date().getFullYear()} S Steve Alden, all rights
               reserved. Made with {/* ❤❤️ 💗*/}
               <img

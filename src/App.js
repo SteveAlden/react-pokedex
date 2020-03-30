@@ -22,9 +22,10 @@ import PokeList from './components/pokemon/PokeList';
 import PokeListP from './components/pokemon/PokeListP';
 import DisplayPokemonBig from './components/pokemon/DisplayPokemonBig';
 import DisplayPokemon from './components/pokemon/DisplayPokemon';
+import NotFoundPage from './components/NotFound';
 class App extends Component {
   state = {
-    pokemons: [
+    pokemonsOld: [
       1,
       2,
       3,
@@ -177,9 +178,13 @@ class App extends Component {
       150,
       151
     ],
+    pokemons: [],
     pokemonData: {}
   };
   componentDidMount() {
+    const N = 151;
+    const arr = Array.from(Array(N), (_, index) => index + 1);
+    this.setState({ pokemons: arr });
     axios
       .get(
         'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json'
@@ -255,6 +260,7 @@ class App extends Component {
               path={`/pokemon/:id`}
               render={props => <DisplayPokemon {...props} />}
             ></Route>
+            <Route path='*' component={NotFoundPage} />
             <Redirect exact from='/' to='/react-pokedex-carousel' />
           </Switch>
         </Router>
