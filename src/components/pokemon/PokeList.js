@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import Pokemon from './Pokemon';
 import StackGrid, { transitions } from 'react-stack-grid';
-
-const { scaleDown, fadeDown, flip, helix } = transitions;
-
-// const isDesktop = useMediaQuery({ minWidth: 600 });
+const { scaleDown } = transitions;
 
 class PokeList extends Component {
   state = {
@@ -12,14 +9,9 @@ class PokeList extends Component {
   };
 
   render() {
-    // this.setState({ po: pokemon });
-
-    // const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 })
-    // const isMobile = useMediaQuery({ maxWidth: 600 });
     let pokemon;
     if (this.props?.pokemons) {
       pokemon = this.props.pokemons;
-      // const pokemon = this.props.pokemons;
       console.log('Pokelist');
       console.log(pokemon);
     }

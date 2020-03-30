@@ -19,6 +19,7 @@ class DisplayPokemon extends Component {
       dataLoaded: false,
       evWidth: '30%',
       textColor: '#898989',
+      // textColor: 'white',
       bodyColor: '#252525',
       mediaColor: '#363636',
       bgColor: 'rgb(25, 25, 25)',
