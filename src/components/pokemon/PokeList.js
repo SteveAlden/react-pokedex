@@ -20,15 +20,15 @@ class PokeList extends Component {
       <>
         <StackGrid
           columnWidth={190}
-          // appear={scaleDown.appear}
-          // appeared={scaleDown.appeared}
-          // enter={scaleDown.enter}
-          // entered={scaleDown.entered}
-          // leaved={scaleDown.leaved}
+          appear={scaleDown.appear}
+          appeared={scaleDown.appeared}
+          enter={scaleDown.enter}
+          entered={scaleDown.entered}
+          leaved={scaleDown.leaved}
           gutterWidth={15}
           gutterHeight={15}
-          // appearDelay={80}
-          // duration={200}
+          appearDelay={80}
+          duration={200}
         >
           {pokemon?.map(p => (
             <Pokemon poke={p} />
