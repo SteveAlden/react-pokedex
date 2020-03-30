@@ -9,3 +9,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Oxanium';
+  src: local('Oxanium'), url(./fonts/Oxanium-Regular.ttf) format('truetype');
+}
