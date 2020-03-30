@@ -17,7 +17,7 @@ function Header() {
             <h3>
               <img
                 alt=''
-                src='https://files.thetriangle.org/assets/pokemon/ball-master.png'
+                src='https://res.cloudinary.com/aldencloud/image/upload/v1585557161/ball-master.png'
                 height='35'
                 className='d-inline-block align-top'
               />
