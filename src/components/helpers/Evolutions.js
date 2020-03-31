@@ -8,7 +8,7 @@ class Evolutions extends Component {
   };
   onMouseOver = () => {
     this.setState({
-      transform: 'scale(1.05)',
+      transform: 'scale(1.07)',
       boxShadow: '0px 5px 15px 5px rgba(87,255,196,0.5)'
     });
   };
@@ -22,7 +22,7 @@ class Evolutions extends Component {
   getStyle = () => {
     return {
       boxShadow: this.state.boxShadow,
-      transition: 'transform .2s',
+      transition: 'transform .1s',
       transform: this.state.transform,
       padding: '5px',
       borderRadius: '50%',
