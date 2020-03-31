@@ -18,8 +18,8 @@ class DisplayPokemon extends Component {
       flavourText: {},
       dataLoaded: false,
       evWidth: '30%',
-      textColor: '#898989',
-      // textColor: 'white',
+      // textColor: '#898989',
+      textColor: 'white',
       bodyColor: '#252525',
       mediaColor: '#363636',
       bgColor: 'rgb(25, 25, 25)',
@@ -88,20 +88,19 @@ class DisplayPokemon extends Component {
       case 'filled':
         return {
           borderRadius: '12px',
-          paddingTop: '2vh',
-          paddingBottom: '2vh',
+          padding: '2vh 5vw 2vh 5vw',
           backgroundColor: this.state.bgColor
         };
 
       case 'empty':
         return {
-          padding: '2vh 5vw 1vh 5vw',
+          padding: '2vh 5vw 2vh 5vw',
           border: '5px solid rgb(25, 25, 25)',
           borderRadius: '12px'
         };
       case 'stats':
         return {
-          padding: '2vh 5vw 1vh 5vw',
+          padding: '2vh 5vw 2vh 5vw',
           backgroundColor: this.state.bgColor,
           borderRadius: '12px'
         };
@@ -251,6 +250,7 @@ class DisplayPokemon extends Component {
           <br />
           <div style={this.getDivStyle('stats')}>
             <h3>Base Stats</h3>
+
             <Stats stats={this.state?.pokeApiData?.stats} />
           </div>
           <br />

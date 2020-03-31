@@ -37,6 +37,7 @@ class Stats extends Component {
                 <div
                   class='progress-bar'
                   style={{
+                    borderRadius: '12px',
                     width: baseStat + '%',
                     backgroundImage:
                       'linear-gradient(to right, rgb(25, 25, 25) 0%, rgba(239,9,105,1) 100%'
