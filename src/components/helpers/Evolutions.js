@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 class Evolutions extends Component {
   state = {
     evWidth: '30%',
@@ -33,6 +34,7 @@ class Evolutions extends Component {
       border: '5px solid rgb(20, 20, 20)'
     };
   };
+
   createEvolutionImage = imgId => {
     return (
       <Link style={{ textDecoration: 'none' }} to={`/pokemon/${imgId}`}>
