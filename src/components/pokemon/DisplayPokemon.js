@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from '../helpers/Loading';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import Evolutions from '../helpers/Evolutions';
@@ -23,7 +24,8 @@ class DisplayPokemon extends Component {
       bodyColor: '#252525',
       mediaColor: '#363636',
       bgColor: 'rgb(25, 25, 25)',
-      border: '5px solid rgb(15, 15, 15)'
+      border: '5px solid rgb(15, 15, 15)',
+      done: undefined
     };
   }
 
@@ -66,6 +68,9 @@ class DisplayPokemon extends Component {
         // react on errors.
         console.error(errors);
       });
+    setTimeout(() => {
+      this.setState({ done: true });
+    }, 1000);
   };
 
   componentDidMount() {
@@ -201,70 +206,83 @@ class DisplayPokemon extends Component {
           color: this.state.textColor
         }}
       >
-        <Row>
-          <img
-            width='50%'
-            className='mr-auto'
-            src={`https://res.cloudinary.com/aldencloud/image/upload/v1584876602/pokemonpng/poke-${this.props.match.params.id}.png`}
-            alt='Generic placeholder'
-            style={{ margin: 'auto' }}
-          />
-        </Row>
-
-        <div style={{ margin: 'auto' }} align='center'>
-          {this.getHr()}
-          <Row>
-            <Col>
-              <NavArrowLeft pokeId={parseInt(this.props.match.params.id) - 1} />
-            </Col>
-            <Col>
-              <h1 align='center'>{pokemonDisplay?.name}</h1>
-            </Col>
-            <Col>
-              <NavArrowRight
-                pokeId={parseInt(this.props.match.params.id) + 1}
+        {!this.state.done ? (
+          <Loading />
+        ) : (
+          <>
+            <Row>
+              <img
+                width='50%'
+                className='mr-auto'
+                src={`https://res.cloudinary.com/aldencloud/image/upload/v1584876602/pokemonpng/poke-${this.props.match.params.id}.png`}
+                alt='Generic placeholder'
+                style={{ margin: 'auto' }}
               />
-            </Col>
-          </Row>
-          {this.getHr()}
-          <div>
-            {pokemonDisplay?.type?.map(t => (
-              <>
-                <Chips size='medium' label={t} />{' '}
-              </>
-            ))}
-          </div>
-          <br />
-          <div style={this.getDivStyle('empty')}>
-            <h5 style={{ textAlign: 'justify' }}>{flavourText?.flavor_text}</h5>
-          </div>
-          <br />
-          <div style={this.getDivStyle('empty')}>
-            {this.createRowCol('Number :', pokemonDisplay?.id)}
-            {this.createRowCol('Height :', pokemonDisplay?.height)}
-            {this.createRowCol('Weight :', pokemonDisplay?.weight)}
-            {this.createRowCol('Spawn chance :', pokemonDisplay?.spawn_chance)}
-            {this.createRowCol('Avg Spawn :', pokemonDisplay?.avg_spawns)}
-            {this.createRowCol('Spawn time :', pokemonDisplay?.spawn_time)}
-          </div>
-          <br />
-          <div style={this.getDivStyle('stats')}>
-            <h3>Base Stats</h3>
+            </Row>
 
-            <Stats stats={this.state?.pokeApiData?.stats} />
-          </div>
-          <br />
-          <div style={this.getDivStyle('filled')}>
-            <h3>Weakness</h3>
-            {pokemonDisplay?.weaknesses?.map(t => (
-              <>
-                <Chips size='small' label={t} />{' '}
-              </>
-            ))}
-          </div>
-          <br />
-          {this.getEvolutions(pokemonDisplay)}
-        </div>
+            <div style={{ margin: 'auto' }} align='center'>
+              {this.getHr()}
+              <Row>
+                <Col>
+                  <NavArrowLeft
+                    pokeId={parseInt(this.props.match.params.id) - 1}
+                  />
+                </Col>
+                <Col>
+                  <h1 align='center'>{pokemonDisplay?.name}</h1>
+                </Col>
+                <Col>
+                  <NavArrowRight
+                    pokeId={parseInt(this.props.match.params.id) + 1}
+                  />
+                </Col>
+              </Row>
+              {this.getHr()}
+              <div>
+                {pokemonDisplay?.type?.map(t => (
+                  <>
+                    <Chips size='medium' label={t} />{' '}
+                  </>
+                ))}
+              </div>
+              <br />
+              <div style={this.getDivStyle('empty')}>
+                <h5 style={{ textAlign: 'justify' }}>
+                  {flavourText?.flavor_text}
+                </h5>
+              </div>
+              <br />
+              <div style={this.getDivStyle('empty')}>
+                {this.createRowCol('Number :', pokemonDisplay?.id)}
+                {this.createRowCol('Height :', pokemonDisplay?.height)}
+                {this.createRowCol('Weight :', pokemonDisplay?.weight)}
+                {this.createRowCol(
+                  'Spawn chance :',
+                  pokemonDisplay?.spawn_chance
+                )}
+                {this.createRowCol('Avg Spawn :', pokemonDisplay?.avg_spawns)}
+                {this.createRowCol('Spawn time :', pokemonDisplay?.spawn_time)}
+              </div>
+              <br />
+              <div style={this.getDivStyle('stats')}>
+                <h3>Base Stats</h3>
+
+                <Stats stats={this.state?.pokeApiData?.stats} />
+              </div>
+              <br />
+              <div style={this.getDivStyle('filled')}>
+                <h3>Weakness</h3>
+                {pokemonDisplay?.weaknesses?.map(t => (
+                  <>
+                    <Chips size='small' label={t} />{' '}
+                  </>
+                ))}
+              </div>
+              <br />
+              {this.getEvolutions(pokemonDisplay)}
+            </div>
+          </>
+        )}
       </Container>
     );
   }

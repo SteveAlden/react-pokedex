@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 
 const Footer = () => {
+  // const [done, setDone] = useState(undefined);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setDone({ done: true });
+  //   }, 1500);
+  // });
   return (
-    <footer className='footer'>
-      <Container fluid style={{ marginTop: '2vh' }}>
+    // <>
+    //   {!done ? null : (
+    <footer className='footer' style={{ marginTop: '30px' }}>
+      <Container fluid>
         <span>
-          <p className='copyright' align='center'>
+          <p className='copyright' align='center' style={{ color: 'white' }}>
             &copy; {new Date().getFullYear()} S Steve Alden, all rights
             reserved. Made with{' '}
             <img
@@ -18,6 +26,8 @@ const Footer = () => {
         </span>
       </Container>
     </footer>
+    // )}
+    // </>
   );
 };
 

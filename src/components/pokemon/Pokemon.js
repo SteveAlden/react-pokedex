@@ -33,6 +33,7 @@ class Pokemon extends Component {
       <Link style={{ textDecoration: 'none' }} to={`/pokemon/${pokemon}`}>
         <img
           src={`https://res.cloudinary.com/aldencloud/image/upload/v1581096275/pokemon/poke-${pokemon}.png`}
+          // src={`https://ik.imagekit.io/alden/poke/tr:w-0.3/${pokemon}.png`}
           // src={`${process.env.PUBLIC_URL}/assets/pokemonImages/${pokemon}.png`}
           style={this.getStyle()}
           width='100%'
