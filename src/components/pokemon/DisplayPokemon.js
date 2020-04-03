@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Loading from '../helpers/Loading';
+import styled from 'styled-components/macro';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import Evolutions from '../helpers/Evolutions';
@@ -9,6 +9,27 @@ import NotFoundPage from '../../components/NotFound';
 import Chips from '../helpers/Chip';
 import FadeIn from 'react-fade-in';
 
+const EmptyDiv = styled.div`
+  background-color: none;
+  text-align: center;
+  margin-bottom: 1.4em;
+`;
+const HollowDiv = styled(EmptyDiv)`
+  padding: 2vh 5vw 2vh 5vw;
+  border-radius: 12px;
+  border: 5px solid rgb(25, 25, 25);
+  background-color: none;
+`;
+const FilledDiv = styled(EmptyDiv)`
+  padding: 2vh 5vw 2vh 5vw;
+  border-radius: 12px;
+  background-color: rgb(25, 25, 25);
+`;
+const Hr = styled.hr`
+  backgroundcolor: rgb(25, 25, 25);
+  border: 2px solid rgb(25, 25, 25);
+  width: 60%;
+`;
 class DisplayPokemon extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +42,6 @@ class DisplayPokemon extends Component {
       dataLoaded: false,
       evWidth: '30%',
       textColor: '#898989',
-      // textColor: 'white',
       bodyColor: '#252525',
       mediaColor: '#363636',
       bgColor: 'rgb(25, 25, 25)',
@@ -89,87 +109,6 @@ class DisplayPokemon extends Component {
     );
   };
 
-  getDivStyle = style => {
-    switch (style) {
-      case 'filled':
-        return {
-          borderRadius: '12px',
-          padding: '2vh 5vw 2vh 5vw',
-          backgroundColor: this.state.bgColor
-        };
-
-      case 'empty':
-        return {
-          padding: '2vh 5vw 2vh 5vw',
-          border: '5px solid rgb(25, 25, 25)',
-          borderRadius: '12px'
-        };
-      case 'stats':
-        return {
-          padding: '2vh 5vw 2vh 5vw',
-          backgroundColor: this.state.bgColor,
-          borderRadius: '12px'
-        };
-    }
-  };
-
-  getEvolutions = pokeDisplay => {
-    let preEv = pokeDisplay?.prev_evolution;
-    let nexEv = pokeDisplay?.next_evolution;
-    if (preEv) {
-      if (nexEv) {
-        // Map previous, then current then next evolution
-        return (
-          <div style={this.getDivStyle('filled')}>
-            <h3>Evolutions</h3>
-            {preEv?.map(t => (
-              <Evolutions imageid={t?.num?.replace(/^0+/, '')} />
-            ))}
-            <Evolutions imageid={this.props.match.params.id} />
-            {nexEv?.map(t => (
-              <Evolutions imageid={t?.num?.replace(/^0+/, '')} />
-            ))}
-          </div>
-        );
-      } else {
-        // map all previous evolutions and display current
-        return (
-          <div style={this.getDivStyle('filled')}>
-            <h3>Evolutions</h3>
-            {preEv?.map(t => (
-              <Evolutions imageid={t?.num?.replace(/^0+/, '')} />
-            ))}
-
-            <Evolutions imageid={this.props.match.params.id} />
-          </div>
-        );
-      }
-    } else if (nexEv) {
-      // display current and map all next evolutions
-      return (
-        <div style={this.getDivStyle('filled')}>
-          <h3>Evolutions</h3>
-          <Evolutions imageid={this.props.match.params.id} />
-          {nexEv?.map(t => (
-            <Evolutions imageid={t?.num?.replace(/^0+/, '')} />
-          ))}
-        </div>
-      );
-    }
-  };
-
-  getHr = () => {
-    return (
-      <hr
-        style={{
-          backgroundColor: 'rgb(25, 25, 25)',
-          border: '2px solid rgb(25, 25, 25)',
-          width: '60%'
-        }}
-      />
-    );
-  };
-
   render() {
     let pokemonDisplay;
     // destructure pokemon from git api
@@ -207,11 +146,7 @@ class DisplayPokemon extends Component {
           color: this.state.textColor
         }}
       >
-        <FadeIn delay={200} transitionDuration={700}>
-          {/* {!this.state.done ? (
-            <Loading />
-          ) : ( */}
-          {/* <> */}
+        <FadeIn delay={100} transitionDuration={700}>
           <Row>
             <img
               width='50%'
@@ -221,9 +156,8 @@ class DisplayPokemon extends Component {
               style={{ margin: 'auto' }}
             />
           </Row>
-
-          <div style={{ margin: 'auto' }} align='center'>
-            {this.getHr()}
+          <EmptyDiv>
+            <Hr />
             <Row>
               <Col>
                 <NavArrowLeft
@@ -239,52 +173,44 @@ class DisplayPokemon extends Component {
                 />
               </Col>
             </Row>
-            {this.getHr()}
-            <div>
-              {pokemonDisplay?.type?.map(t => (
-                <>
-                  <Chips size='medium' label={t} />{' '}
-                </>
-              ))}
-            </div>
-            <br />
-            <div style={this.getDivStyle('empty')}>
-              <h5 style={{ textAlign: 'justify' }}>
-                {flavourText?.flavor_text}
-              </h5>
-            </div>
-            <br />
-            <div style={this.getDivStyle('empty')}>
-              {this.createRowCol('Number :', pokemonDisplay?.id)}
-              {this.createRowCol('Height :', pokemonDisplay?.height)}
-              {this.createRowCol('Weight :', pokemonDisplay?.weight)}
-              {this.createRowCol(
-                'Spawn chance :',
-                pokemonDisplay?.spawn_chance
-              )}
-              {this.createRowCol('Avg Spawn :', pokemonDisplay?.avg_spawns)}
-              {this.createRowCol('Spawn time :', pokemonDisplay?.spawn_time)}
-            </div>
-            <br />
-            <div style={this.getDivStyle('stats')}>
-              <h3>Base Stats</h3>
-
-              <Stats stats={this.state?.pokeApiData?.stats} />
-            </div>
-            <br />
-            <div style={this.getDivStyle('filled')}>
-              <h3>Weakness</h3>
-              {pokemonDisplay?.weaknesses?.map(t => (
-                <>
-                  <Chips size='small' label={t} />{' '}
-                </>
-              ))}
-            </div>
-            <br />
-            {this.getEvolutions(pokemonDisplay)}
-          </div>
-          {/* </> */}
-          {/* )} */}
+            <Hr />
+          </EmptyDiv>
+          <EmptyDiv>
+            {pokemonDisplay?.type?.map(t => (
+              <>
+                <Chips size='medium' label={t} />{' '}
+              </>
+            ))}
+          </EmptyDiv>
+          <HollowDiv>
+            <h5 style={{ textAlign: 'justify' }}>{flavourText?.flavor_text}</h5>
+          </HollowDiv>
+          <HollowDiv>
+            {this.createRowCol('Number :', pokemonDisplay?.id)}
+            {this.createRowCol('Height :', pokemonDisplay?.height)}
+            {this.createRowCol('Weight :', pokemonDisplay?.weight)}
+            {this.createRowCol('Spawn chance :', pokemonDisplay?.spawn_chance)}
+            {this.createRowCol('Avg Spawn :', pokemonDisplay?.avg_spawns)}
+            {this.createRowCol('Spawn time :', pokemonDisplay?.spawn_time)}
+          </HollowDiv>
+          <FilledDiv>
+            <h3>Base Stats</h3>
+            <Stats stats={this.state?.pokeApiData?.stats} />
+          </FilledDiv>
+          <FilledDiv>
+            <h3>Weakness</h3>
+            {pokemonDisplay?.weaknesses?.map(t => (
+              <>
+                <Chips size='small' label={t} />{' '}
+              </>
+            ))}
+          </FilledDiv>
+          <FilledDiv>
+            <Evolutions
+              pokeDisplay={pokemonDisplay}
+              imageId={this.props.match.params.id}
+            />
+          </FilledDiv>
         </FadeIn>
       </Container>
     );

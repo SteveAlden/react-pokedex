@@ -1,58 +1,55 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import Evolution from './Evolution';
 
-class Evolutions extends Component {
-  state = {
-    evWidth: '30%',
-    transform: 'scale(1.0)',
-    boxShadow: 'none'
-  };
-  onMouseOver = () => {
-    this.setState({
-      transform: 'scale(1.07)',
-      boxShadow: '0px 5px 15px 5px rgba(87,255,196,0.5)'
-    });
-  };
-  onMouseOut = () => {
-    this.setState({
-      transform: 'scale(1.0)',
-      boxShadow: 'none'
-    });
-  };
+const Evolutions = props => {
+  console.log('in eve');
+  console.log(props);
+  let preEv = props?.pokeDisplay?.prev_evolution;
+  console.log('preEv', preEv);
+  let nexEv = props?.pokeDisplay?.next_evolution;
+  console.log('nexEv', nexEv);
+  if (preEv) {
+    if (nexEv) {
+      // Map previous, then current then next evolution
+      return (
+        <>
+          <h3>Evolutions</h3>
+          {preEv?.map(t => (
+            <Evolution imageid={t?.num?.replace(/^0+/, '')} />
+          ))}
+          <Evolution imageid={props.imageId} />
+          {nexEv?.map(t => (
+            <Evolution imageid={t?.num?.replace(/^0+/, '')} />
+          ))}
+        </>
+      );
+    } else {
+      // map all previous evolutions and display current
+      return (
+        <>
+          <h3>Evolutions</h3>
+          {preEv?.map(t => (
+            <Evolution imageid={t?.num?.replace(/^0+/, '')} />
+          ))}
 
-  getStyle = () => {
-    return {
-      boxShadow: this.state.boxShadow,
-      transition: 'transform .1s',
-      transform: this.state.transform,
-      padding: '5px',
-      borderRadius: '50%',
-      margin: '5px',
-      width: '100px',
-      height: '100px',
-      backgroundColor: 'rgb(35, 35, 35)',
-      border: '5px solid rgb(20, 20, 20)'
-    };
-  };
-
-  createEvolutionImage = imgId => {
+          <Evolution imageid={props.imageId} />
+        </>
+      );
+    }
+  } else if (nexEv) {
+    // display current and map all next evolutions
     return (
-      <Link style={{ textDecoration: 'none' }} to={`/pokemon/${imgId}`}>
-        <img
-          style={this.getStyle()}
-          onMouseOver={this.onMouseOver}
-          onMouseOut={this.onMouseOut}
-          onTouchStart={this.onMouseOver}
-          onTouchEnd={this.onMouseOut}
-          src={`https://res.cloudinary.com/aldencloud/image/upload/v1584876602/pokemonpng/poke-${imgId}.png`}
-          alt='Generic placeholder'
-        />
-      </Link>
+      <>
+        <h3>Evolutions</h3>
+        <Evolution imageid={props.imageId} />
+        {nexEv?.map(t => (
+          <Evolution imageid={t?.num?.replace(/^0+/, '')} />
+        ))}
+      </>
     );
-  };
-
-  render() {
-    return this.createEvolutionImage(this.props.imageid);
+  } else {
+    return null;
   }
-}
+};
+
 export default Evolutions;

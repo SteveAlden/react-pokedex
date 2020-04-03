@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
+import React from 'react';
+import { Row, Col } from 'react-bootstrap';
 
-class Stats extends Component {
-  getStatName = name => {
+const Stats = props => {
+  const getStatName = name => {
     switch (name) {
       case 'speed':
         return 'Speed    ';
@@ -19,14 +19,14 @@ class Stats extends Component {
     }
   };
 
-  getDiv = s => {
+  const getDiv = s => {
     {
       let baseStat = s?.base_stat;
       return (
         <>
           <Row>
             <Col align='left' className='col-sm-1 col-md-2'>
-              <h5>{this.getStatName(s?.stat?.name)}</h5>
+              <h5>{getStatName(s?.stat?.name)}</h5>
             </Col>
             <Col className='col-sm-11 col-md-10' align='left'>
               <div
@@ -51,14 +51,11 @@ class Stats extends Component {
       );
     }
   };
-
-  render() {
-    let stat;
-    if (this.props?.stats) {
-      stat = this.props?.stats;
-    }
-    return <div>{stat?.map(s => this.getDiv(s))}</div>;
+  let stat;
+  if (props?.stats) {
+    stat = props?.stats;
   }
-}
+  return <div>{stat?.map(s => getDiv(s))}</div>;
+};
 
 export default Stats;

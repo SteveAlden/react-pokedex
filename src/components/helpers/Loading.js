@@ -5,11 +5,7 @@ const Loading = () => {
   return (
     <div align='center' style={{ marginTop: '20%' }}>
       <FadeIn>
-        <ReactLoading
-          // type={'bubbles'}
-          type={'bars'}
-          color={'white'}
-        />
+        <ReactLoading type={'bars'} color={'white'} />
       </FadeIn>
     </div>
   );
