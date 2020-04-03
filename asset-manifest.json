@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/home/static/css/main.08244ddf.chunk.css",
-    "main.js": "/home/static/js/main.1fc00f71.chunk.js",
-    "main.js.map": "/home/static/js/main.1fc00f71.chunk.js.map",
-    "runtime-main.js": "/home/static/js/runtime-main.d243344e.js",
-    "runtime-main.js.map": "/home/static/js/runtime-main.d243344e.js.map",
-    "static/js/2.0fa8969b.chunk.js": "/home/static/js/2.0fa8969b.chunk.js",
-    "static/js/2.0fa8969b.chunk.js.map": "/home/static/js/2.0fa8969b.chunk.js.map",
-    "index.html": "/home/index.html",
-    "precache-manifest.4fdf9a7d8429c0b0b990734c93f25651.js": "/home/precache-manifest.4fdf9a7d8429c0b0b990734c93f25651.js",
-    "service-worker.js": "/home/service-worker.js",
-    "static/css/main.08244ddf.chunk.css.map": "/home/static/css/main.08244ddf.chunk.css.map",
-    "static/js/2.0fa8969b.chunk.js.LICENSE.txt": "/home/static/js/2.0fa8969b.chunk.js.LICENSE.txt",
-    "static/media/Oxanium-Regular.ttf": "/home/static/media/Oxanium-Regular.f561c6cc.ttf"
+    "main.css": "/react-pokedex/home/static/css/main.b18af190.chunk.css",
+    "main.js": "/react-pokedex/home/static/js/main.67bfb4e5.chunk.js",
+    "main.js.map": "/react-pokedex/home/static/js/main.67bfb4e5.chunk.js.map",
+    "runtime-main.js": "/react-pokedex/home/static/js/runtime-main.4e60c3fb.js",
+    "runtime-main.js.map": "/react-pokedex/home/static/js/runtime-main.4e60c3fb.js.map",
+    "static/js/2.ce6f303f.chunk.js": "/react-pokedex/home/static/js/2.ce6f303f.chunk.js",
+    "static/js/2.ce6f303f.chunk.js.map": "/react-pokedex/home/static/js/2.ce6f303f.chunk.js.map",
+    "index.html": "/react-pokedex/home/index.html",
+    "precache-manifest.7992ccfe0abc846a3f1a4fc6c5efe27d.js": "/react-pokedex/home/precache-manifest.7992ccfe0abc846a3f1a4fc6c5efe27d.js",
+    "service-worker.js": "/react-pokedex/home/service-worker.js",
+    "static/css/main.b18af190.chunk.css.map": "/react-pokedex/home/static/css/main.b18af190.chunk.css.map",
+    "static/js/2.ce6f303f.chunk.js.LICENSE.txt": "/react-pokedex/home/static/js/2.ce6f303f.chunk.js.LICENSE.txt",
+    "static/media/Oxanium-Regular.ttf": "/react-pokedex/home/static/media/Oxanium-Regular.f561c6cc.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.d243344e.js",
-    "static/js/2.0fa8969b.chunk.js",
-    "static/css/main.08244ddf.chunk.css",
-    "static/js/main.1fc00f71.chunk.js"
+    "static/js/runtime-main.4e60c3fb.js",
+    "static/js/2.ce6f303f.chunk.js",
+    "static/css/main.b18af190.chunk.css",
+    "static/js/main.67bfb4e5.chunk.js"
   ]
 }
