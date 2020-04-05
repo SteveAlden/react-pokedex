@@ -8,7 +8,9 @@ const NotFoundPage = () => {
       <FadeIn delay={100} transitionDuration={700}>
         <img
           width='80%'
-          src='https://res.cloudinary.com/aldencloud/image/upload/v1585543806/404_notfound.png'
+          // src='https://res.cloudinary.com/alden/cloud/image/upload/v1586094764/404-not-found.png'
+          src='https://res.cloudinary.com/aldencloud/image/upload/v1586094290/404_notfound.png'
+          // src='https://res.cloudinary.com/aldencloud/image/upload/v1585543806/404_notfound_black.png'
         />
         <h1>Uh-oh!</h1>
         <h4>You look lost on your journey!</h4>
