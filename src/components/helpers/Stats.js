@@ -31,7 +31,7 @@ const Stats = props => {
             <Col className='col-sm-11 col-md-10' align='left'>
               <div
                 class='progress'
-                style={{ height: '15px', backgroundColor: 'rgb(25, 25, 25)' }}
+                style={{ height: '20px', backgroundColor: 'rgb(25, 25, 25)' }}
               >
                 {s?.base_stat}
                 <div
@@ -55,7 +55,12 @@ const Stats = props => {
   if (props?.stats) {
     stat = props?.stats;
   }
-  return <div>{stat?.map(s => getDiv(s))}</div>;
+  return (
+    <div>
+      <h3 style={{ marginBottom: '20px' }}>Base Stats</h3>
+      {stat?.map(s => getDiv(s))}
+    </div>
+  );
 };
 
 export default Stats;

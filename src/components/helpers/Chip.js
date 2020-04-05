@@ -52,5 +52,28 @@ const getChipStyle = pokeType => {
       return '#56AEFF';
   }
 };
+const Weakness = props => {
+  return (
+    <>
+      <h3>Weakness</h3>
+      {props?.weaknesses?.map(t => (
+        <>
+          <Chips size='small' label={t} />{' '}
+        </>
+      ))}
+    </>
+  );
+};
 
-export default Chips;
+const PokemonType = props => {
+  return (
+    <>
+      {props?.type?.map(t => (
+        <>
+          <Chips size='medium' label={t} />{' '}
+        </>
+      ))}
+    </>
+  );
+};
+export { PokemonType, Weakness };

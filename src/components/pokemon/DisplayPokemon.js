@@ -6,9 +6,8 @@ import Evolutions from '../helpers/Evolutions';
 import Stats from '../helpers/Stats';
 import { NavArrowLeft, NavArrowRight } from '../helpers/NavArrows';
 import NotFoundPage from '../../components/NotFound';
-import Chips from '../helpers/Chip';
+import { Weakness, PokemonType } from '../helpers/Chip';
 import FadeIn from 'react-fade-in';
-
 const EmptyDiv = styled.div`
   background-color: none;
   text-align: center;
@@ -19,11 +18,13 @@ const HollowDiv = styled(EmptyDiv)`
   border-radius: 12px;
   border: 5px solid rgb(25, 25, 25);
   background-color: none;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
 `;
 const FilledDiv = styled(EmptyDiv)`
   padding: 2vh 5vw 2vh 5vw;
   border-radius: 12px;
   background-color: rgb(25, 25, 25);
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
 `;
 const Hr = styled.hr`
   backgroundcolor: rgb(25, 25, 25);
@@ -176,16 +177,29 @@ class DisplayPokemon extends Component {
             <Hr />
           </EmptyDiv>
           <EmptyDiv>
-            {pokemonDisplay?.type?.map(t => (
-              <>
-                <Chips size='medium' label={t} />{' '}
-              </>
-            ))}
+            <PokemonType type={pokemonDisplay?.type} />
           </EmptyDiv>
           <HollowDiv>
             <h5 style={{ textAlign: 'justify' }}>{flavourText?.flavor_text}</h5>
           </HollowDiv>
           <HollowDiv>
+            {/* <Row>
+              <Col>
+                <h3> {pokemonDisplay?.id}</h3>
+                <br />
+                Number
+              </Col>
+              <Col>
+                <h3>{pokemonDisplay?.height}</h3>
+                <br />
+                Height
+              </Col>
+              <Col>
+                <h3>{pokemonDisplay?.weight}</h3>
+                <br />
+                Weight
+              </Col>
+            </Row> */}
             {this.createRowCol('Number :', pokemonDisplay?.id)}
             {this.createRowCol('Height :', pokemonDisplay?.height)}
             {this.createRowCol('Weight :', pokemonDisplay?.weight)}
@@ -194,16 +208,10 @@ class DisplayPokemon extends Component {
             {this.createRowCol('Spawn time :', pokemonDisplay?.spawn_time)}
           </HollowDiv>
           <FilledDiv>
-            <h3>Base Stats</h3>
             <Stats stats={this.state?.pokeApiData?.stats} />
           </FilledDiv>
           <FilledDiv>
-            <h3>Weakness</h3>
-            {pokemonDisplay?.weaknesses?.map(t => (
-              <>
-                <Chips size='small' label={t} />{' '}
-              </>
-            ))}
+            <Weakness weaknesses={pokemonDisplay?.weaknesses} />
           </FilledDiv>
           <FilledDiv>
             <Evolutions
