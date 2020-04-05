@@ -171,15 +171,15 @@ class DisplayPokemon extends Component {
           <HollowDiv>
             <Row>
               <Col>
-                <h4>{pokemonDisplay?.height}</h4>
+                <h5>{pokemonDisplay?.height}</h5>
                 Height
               </Col>
               <Col>
-                <h4> {pokemonDisplay?.id}</h4>
+                <h5> {pokemonDisplay?.id}</h5>
                 Number
               </Col>
               <Col>
-                <h4>{pokemonDisplay?.weight}</h4>
+                <h5>{pokemonDisplay?.weight}</h5>
                 Weight
               </Col>
             </Row>
