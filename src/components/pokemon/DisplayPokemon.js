@@ -99,17 +99,6 @@ class DisplayPokemon extends Component {
     this.updateComponent(this.props.match.params.id);
   }
 
-  createRowCol = (col1, col2) => {
-    return (
-      <h5>
-        <Row>
-          <Col align='left'>{col1}</Col>
-          <Col align='right'>{col2}</Col>
-        </Row>
-      </h5>
-    );
-  };
-
   render() {
     let pokemonDisplay;
     // destructure pokemon from git api
@@ -180,32 +169,23 @@ class DisplayPokemon extends Component {
             <PokemonType type={pokemonDisplay?.type} />
           </EmptyDiv>
           <HollowDiv>
-            <h5 style={{ textAlign: 'justify' }}>{flavourText?.flavor_text}</h5>
-          </HollowDiv>
-          <HollowDiv>
-            {/* <Row>
+            <Row>
               <Col>
-                <h3> {pokemonDisplay?.id}</h3>
-                <br />
-                Number
-              </Col>
-              <Col>
-                <h3>{pokemonDisplay?.height}</h3>
-                <br />
+                <h4>{pokemonDisplay?.height}</h4>
                 Height
               </Col>
               <Col>
-                <h3>{pokemonDisplay?.weight}</h3>
-                <br />
+                <h4> {pokemonDisplay?.id}</h4>
+                Number
+              </Col>
+              <Col>
+                <h4>{pokemonDisplay?.weight}</h4>
                 Weight
               </Col>
-            </Row> */}
-            {this.createRowCol('Number :', pokemonDisplay?.id)}
-            {this.createRowCol('Height :', pokemonDisplay?.height)}
-            {this.createRowCol('Weight :', pokemonDisplay?.weight)}
-            {this.createRowCol('Spawn chance :', pokemonDisplay?.spawn_chance)}
-            {this.createRowCol('Avg Spawn :', pokemonDisplay?.avg_spawns)}
-            {this.createRowCol('Spawn time :', pokemonDisplay?.spawn_time)}
+            </Row>
+          </HollowDiv>
+          <HollowDiv>
+            <h5 style={{ textAlign: 'justify' }}>{flavourText?.flavor_text}</h5>
           </HollowDiv>
           <FilledDiv>
             <Stats stats={this.state?.pokeApiData?.stats} />
