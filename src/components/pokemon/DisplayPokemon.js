@@ -98,7 +98,14 @@ class DisplayPokemon extends Component {
   componentDidMount() {
     this.updateComponent(this.props.match.params.id);
   }
-
+  createRowCol = (ele1, ele2) => {
+    return (
+      <Col>
+        <h5>{ele1}</h5>
+        {ele2}
+      </Col>
+    );
+  };
   render() {
     let pokemonDisplay;
     // destructure pokemon from git api
@@ -170,18 +177,9 @@ class DisplayPokemon extends Component {
           </EmptyDiv>
           <HollowDiv>
             <Row>
-              <Col>
-                <h5>{pokemonDisplay?.height}</h5>
-                Height
-              </Col>
-              <Col>
-                <h5> {pokemonDisplay?.id}</h5>
-                Number
-              </Col>
-              <Col>
-                <h5>{pokemonDisplay?.weight}</h5>
-                Weight
-              </Col>
+              {this.createRowCol(pokemonDisplay?.height, 'Height')}
+              {this.createRowCol(pokemonDisplay?.id, 'Number')}
+              {this.createRowCol(pokemonDisplay?.weight, 'Weight')}
             </Row>
           </HollowDiv>
           <HollowDiv>
