@@ -27,8 +27,8 @@ const FilledDiv = styled(EmptyDiv)`
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
 `;
 const Hr = styled.hr`
-  backgroundcolor: rgb(25, 25, 25);
-  border: 2px solid rgb(25, 25, 25);
+  color: rgb(25, 25, 25);
+  border: 2.5px solid rgb(25, 25, 25);
   width: 60%;
 `;
 class DisplayPokemon extends Component {
@@ -47,7 +47,7 @@ class DisplayPokemon extends Component {
       mediaColor: '#363636',
       bgColor: 'rgb(25, 25, 25)',
       border: '5px solid rgb(15, 15, 15)',
-      done: undefined
+      done: undefined,
     };
   }
 
@@ -57,7 +57,7 @@ class DisplayPokemon extends Component {
     return thisProp === newProp || this.updateComponent(newProp);
   }
 
-  updateComponent = newId => {
+  updateComponent = (newId) => {
     let pokeGitUrl =
       'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json';
     let pokeApiUrl = `https://pokeapi.co/api/v2/pokemon/${newId}`;
@@ -76,7 +76,7 @@ class DisplayPokemon extends Component {
           this.setState({ pokeApiData: responseTwo });
           axios
             .get(species.url)
-            .then(res =>
+            .then((res) =>
               this.setState(
                 { speciesDescription: res.data },
                 console.log(res.data)
@@ -86,7 +86,7 @@ class DisplayPokemon extends Component {
           console.log(species, species.url, this.state.speciesDescription);
         })
       )
-      .catch(errors => {
+      .catch((errors) => {
         // react on errors.
         console.error(errors);
       });
@@ -105,7 +105,7 @@ class DisplayPokemon extends Component {
     if (this.state?.pokemonData) {
       let { pokemon } = this.state.pokemonData;
       pokemonDisplay = pokemon?.find(
-        poke => poke.id == this.props.match.params.id
+        (poke) => poke.id == this.props.match.params.id
       );
     } else {
       console.log('no data');
@@ -115,7 +115,7 @@ class DisplayPokemon extends Component {
     if (this.state?.speciesDescription) {
       let { flavor_text_entries } = this.state?.speciesDescription;
       flavourText = flavor_text_entries?.find(
-        text =>
+        (text) =>
           (text?.language?.name === 'en') &
           (text?.version?.name === 'omega-ruby')
       );
@@ -133,7 +133,7 @@ class DisplayPokemon extends Component {
       <Container
         style={{
           marginTop: '10vh',
-          color: this.state.textColor
+          color: this.state.textColor,
         }}
       >
         <FadeIn delay={100} transitionDuration={700}>
