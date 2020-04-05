@@ -51,61 +51,6 @@ class DisplayPokemon extends Component {
     };
   }
 
-  shouldComponentUpdate(nextProps) {
-    let newProp = nextProps.match.params.id;
-    let thisProp = this.props.match.params.id;
-    return thisProp === newProp || this.updateComponent(newProp);
-  }
-
-  updateComponent = (newId) => {
-    let pokeGitUrl =
-      'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json';
-    let pokeApiUrl = `https://pokeapi.co/api/v2/pokemon/${newId}`;
-
-    const pokeGitData = axios.get(pokeGitUrl);
-    const pokeApiData = axios.get(pokeApiUrl);
-
-    axios
-      .all([pokeGitData, pokeApiData])
-      .then(
-        axios.spread((...responses) => {
-          const responseOne = responses[0].data;
-          const responseTwo = responses[1].data;
-          let { species } = responseTwo;
-          this.setState({ pokemonData: responseOne });
-          this.setState({ pokeApiData: responseTwo });
-          axios
-            .get(species.url)
-            .then((res) =>
-              this.setState(
-                { speciesDescription: res.data },
-                console.log(res.data)
-              )
-            );
-
-          console.log(species, species.url, this.state.speciesDescription);
-        })
-      )
-      .catch((errors) => {
-        // react on errors.
-        console.error(errors);
-      });
-    setTimeout(() => {
-      this.setState({ done: true });
-    }, 1000);
-  };
-
-  componentDidMount() {
-    this.updateComponent(this.props.match.params.id);
-  }
-  createRowCol = (ele1, ele2) => {
-    return (
-      <Col>
-        <h5>{ele1}</h5>
-        {ele2}
-      </Col>
-    );
-  };
   render() {
     let pokemonDisplay;
     // destructure pokemon from git api
@@ -201,6 +146,63 @@ class DisplayPokemon extends Component {
       </Container>
     );
   }
+
+  shouldComponentUpdate(nextProps) {
+    let newProp = nextProps.match.params.id;
+    let thisProp = this.props.match.params.id;
+    return thisProp === newProp || this.updateComponent(newProp);
+  }
+
+  updateComponent = (newId) => {
+    let pokeGitUrl =
+      'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json';
+    let pokeApiUrl = `https://pokeapi.co/api/v2/pokemon/${newId}`;
+
+    const pokeGitData = axios.get(pokeGitUrl);
+    const pokeApiData = axios.get(pokeApiUrl);
+
+    axios
+      .all([pokeGitData, pokeApiData])
+      .then(
+        axios.spread((...responses) => {
+          const responseOne = responses[0].data;
+          const responseTwo = responses[1].data;
+          let { species } = responseTwo;
+          this.setState({ pokemonData: responseOne });
+          this.setState({ pokeApiData: responseTwo });
+          axios
+            .get(species.url)
+            .then((res) =>
+              this.setState(
+                { speciesDescription: res.data },
+                console.log(res.data)
+              )
+            );
+
+          console.log(species, species.url, this.state.speciesDescription);
+        })
+      )
+      .catch((errors) => {
+        // react on errors.
+        console.error(errors);
+      });
+    setTimeout(() => {
+      this.setState({ done: true });
+    }, 1000);
+  };
+
+  componentDidMount() {
+    this.updateComponent(this.props.match.params.id);
+  }
+
+  createRowCol = (ele1, ele2) => {
+    return (
+      <Col>
+        <h5>{ele1}</h5>
+        {ele2}
+      </Col>
+    );
+  };
 }
 
 export default DisplayPokemon;

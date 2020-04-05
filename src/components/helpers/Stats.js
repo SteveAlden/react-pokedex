@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
-const Stats = props => {
-  const getStatName = name => {
+const Stats = (props) => {
+  const getStatName = (name) => {
     switch (name) {
       case 'speed':
         return 'Speed    ';
@@ -19,7 +19,7 @@ const Stats = props => {
     }
   };
 
-  const getDiv = s => {
+  const getDiv = (s) => {
     {
       let baseStat = s?.base_stat;
       return (
@@ -40,7 +40,7 @@ const Stats = props => {
                     borderRadius: '12px',
                     width: baseStat + '%',
                     backgroundImage:
-                      'linear-gradient(to right, rgb(25, 25, 25) 0%, rgba(239,9,105,1) 100%'
+                      'linear-gradient(to right, rgb(25, 25, 25) 0%, rgba(239,9,105,1) 100%',
                   }}
                 ></div>
               </div>
@@ -58,7 +58,7 @@ const Stats = props => {
   return (
     <div>
       <h3 style={{ marginBottom: '20px' }}>Base Stats</h3>
-      {stat?.map(s => getDiv(s))}
+      {stat?.map((s) => getDiv(s))}
     </div>
   );
 };
