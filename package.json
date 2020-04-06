@@ -22,7 +22,6 @@
     "styled-components": "^5.0.1",
     "typeface-roboto": "0.0.75"
   },
-  "homepage": "http://stevealden.github.io/react-pokedex/home",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
