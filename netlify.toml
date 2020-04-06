@@ -1,6 +1,6 @@
 [build]
-  base    = "/"
-  publish = "./build"
+  base    = "react-poke-caro/"
+  publish = "react-poke-caro/build"
   command = "npm run build"
 
 [[redirects]]
