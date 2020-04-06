@@ -4,18 +4,18 @@ import { Link } from 'react-router-dom';
 const arrowColor = '#898989';
 class NavArrowLeft extends Component {
   state = {
-    transform: 'scale(1.0)'
+    transform: 'scale(1.0)',
   };
 
   onMouseOver = () => {
     this.setState({
-      transform: 'scale(1.3)'
+      transform: 'scale(1.3)',
     });
   };
 
   onMouseOut = () => {
     this.setState({
-      transform: 'scale(1.0)'
+      transform: 'scale(1.0)',
     });
   };
 
@@ -25,11 +25,11 @@ class NavArrowLeft extends Component {
       fontSize: '56px',
       transition: 'transform .1s',
       transform: this.state.transform,
-      color: arrowColor
+      color: arrowColor,
     };
   };
 
-  createArrowIcon = pokeId => {
+  createArrowIcon = (pokeId) => {
     return (
       <Link style={{ textDecoration: 'none' }} to={`/pokemon/${pokeId}`}>
         <i
@@ -51,18 +51,18 @@ class NavArrowLeft extends Component {
 
 class NavArrowRight extends Component {
   state = {
-    transform: 'scale(1.0)'
+    transform: 'scale(1.0)',
   };
 
   onMouseOver = () => {
     this.setState({
-      transform: 'scale(1.3)'
+      transform: 'scale(1.3)',
     });
   };
 
   onMouseOut = () => {
     this.setState({
-      transform: 'scale(1.0)'
+      transform: 'scale(1.0)',
     });
   };
 
@@ -72,11 +72,11 @@ class NavArrowRight extends Component {
       fontSize: '56px',
       transition: 'transform .1s',
       transform: this.state.transform,
-      color: arrowColor
+      color: arrowColor,
     };
   };
 
-  createArrowIcon = pokeId => {
+  createArrowIcon = (pokeId) => {
     return (
       <Link style={{ textDecoration: 'none' }} to={`/pokemon/${pokeId}`}>
         <i

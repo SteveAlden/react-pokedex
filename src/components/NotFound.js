@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import FadeIn from 'react-fade-in';
+
 const NotFoundPage = () => {
   return (
     <Container style={{ paddingTop: '150px', color: 'white' }} align='center'>
@@ -15,7 +16,7 @@ const NotFoundPage = () => {
         <h1>Uh-oh!</h1>
         <h4>You look lost on your journey!</h4>
         <Link to='/home' style={{ textDecoration: 'none', color: 'white' }}>
-          Go back home
+          {'🡨'} Go back home
         </Link>
       </FadeIn>
     </Container>
