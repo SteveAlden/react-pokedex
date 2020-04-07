@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Layout from '../layouts/Layout';
 import styled from 'styled-components/macro';
 import axios from 'axios';
-import { Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import Evolutions from '../components/Evolutions';
 import Stats from '../components/Stats';
 import NotFoundPage from '../containers/NotFound';
@@ -12,44 +12,33 @@ import { Name, Description, Info } from '../components/Description';
 
 const Image = styled.img`
   margin: auto;
+  margin-bottom: 10px;
   width: 50%;
   display: block;
 `;
-
+const textColor = '#898989';
 class DisplayPokemon extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pokemonNumber: this.props.match.params.id,
-      pokemonData: {},
-      pokeApiData: {},
-      speciesDescription: {},
-      flavourText: {},
-      dataLoaded: false,
-      textColor: '#898989',
-    };
-  }
+  state = {
+    pokemonNumber: this.props.match.params.id,
+    pokemonGitData: {},
+    pokeApiData: {},
+    species: {},
+  };
 
   render() {
-    let pokemonDisplay;
     // destructure pokemon from git api
-    if (this.state?.pokemonData) {
-      let { pokemon } = this.state.pokemonData;
-      pokemonDisplay = pokemon?.find(
-        (poke) => poke.id == this.props.match.params.id
-      );
-    }
+    let { pokemon } = this.state.pokemonGitData || {};
+    let pokemonDisplay;
+    pokemonDisplay = pokemon?.find(
+      (poke) => poke.id == this.props.match.params.id
+    );
     // destructure description from species
-    let flavourText;
-    if (this.state?.speciesDescription) {
-      let { flavor_text_entries } = this.state?.speciesDescription;
-      flavourText = flavor_text_entries?.find(
-        (text) =>
-          (text?.language?.name === 'en') &
-          (text?.version?.name === 'omega-ruby')
-      );
-    }
-
+    let { flavor_text_entries, genera } = this.state?.species || {};
+    let flavourText = flavor_text_entries?.find(
+      (text) =>
+        (text?.language?.name === 'en') & (text?.version?.name === 'omega-ruby')
+    );
+    let genus = genera?.find((g) => g?.language?.name === 'en');
     if (
       isNaN(this.props.match.params.id) |
       (this.props.match.params.id > 151) |
@@ -62,7 +51,7 @@ class DisplayPokemon extends Component {
         <Container
           style={{
             marginTop: '10vh',
-            color: this.state.textColor,
+            color: textColor,
           }}
         >
           <FadeIn delay={100} transitionDuration={700}>
@@ -70,7 +59,11 @@ class DisplayPokemon extends Component {
               alt=''
               src={`https://res.cloudinary.com/aldencloud/image/upload/v1584876602/pokemonpng/poke-${this.props.match.params.id}.png`}
             />
-            <Name name={pokemonDisplay?.name} id={this.props.match.params.id} />
+            <Name
+              name={pokemonDisplay?.name}
+              genus={genus?.genus}
+              id={this.props.match.params.id}
+            />
             <PokemonType type={pokemonDisplay?.type} />
             <Info
               height={pokemonDisplay?.height}
@@ -103,7 +96,7 @@ class DisplayPokemon extends Component {
       this.setState({ pokeApiData: responseTwo });
       axios
         .get(species.url)
-        .then((res) => this.setState({ speciesDescription: res.data }));
+        .then((res) => this.setState({ species: res.data }));
     });
   };
   componentDidMount() {
@@ -111,7 +104,7 @@ class DisplayPokemon extends Component {
       'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json';
     axios
       .get(pokeGitUrl)
-      .then((res) => this.setState({ pokemonData: res.data }));
+      .then((res) => this.setState({ pokemonGitData: res.data }));
     this.updateComponent(this.props.match.params.id);
   }
 }
