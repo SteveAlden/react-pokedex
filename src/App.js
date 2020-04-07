@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
@@ -15,7 +15,7 @@ import NotFoundPage from './components/NotFound';
 class App extends Component {
   state = {
     pokemons: [],
-    pokemonData: {}
+    pokemonData: {},
   };
   componentDidMount() {
     const N = 151;
@@ -25,18 +25,17 @@ class App extends Component {
       .get(
         'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json'
       )
-      .then(res => this.setState({ pokemonData: res.data }));
+      .then((res) => this.setState({ pokemonData: res.data }));
   }
   render() {
     return (
       <div>
-        <Header />
         <Router>
           <Switch>
             <Route
               exact
               path='/home'
-              render={props => (
+              render={(props) => (
                 <>
                   <div style={{ marginTop: '120px' }}>
                     <PokeList pokemons={this.state.pokemons} />
@@ -46,13 +45,12 @@ class App extends Component {
             />
             <Route
               path={`/pokemon/:id`}
-              render={props => <DisplayPokemon {...props} />}
+              render={(props) => <DisplayPokemon {...props} />}
             ></Route>
             <Redirect exact from='/' to='/home' />
             <Route path='*' exact={true} component={NotFoundPage} />
           </Switch>
         </Router>
-        <Footer />
       </div>
     );
   }

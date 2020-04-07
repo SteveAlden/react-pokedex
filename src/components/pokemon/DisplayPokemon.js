@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Layout from '../layouts/Layout';
 import styled from 'styled-components/macro';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -82,68 +83,72 @@ class DisplayPokemon extends Component {
       return <NotFoundPage />;
     }
     return (
-      <Container
-        style={{
-          marginTop: '10vh',
-          color: this.state.textColor,
-        }}
-      >
-        <FadeIn delay={100} transitionDuration={700}>
-          <Row>
-            <img
-              width='50%'
-              className='mr-auto'
-              src={`https://res.cloudinary.com/aldencloud/image/upload/v1584876602/pokemonpng/poke-${this.props.match.params.id}.png`}
-              alt='Generic placeholder'
-              style={{ margin: 'auto' }}
-            />
-          </Row>
-          <EmptyDiv>
-            <Hr />
+      <Layout>
+        <Container
+          style={{
+            marginTop: '10vh',
+            color: this.state.textColor,
+          }}
+        >
+          <FadeIn delay={100} transitionDuration={700}>
             <Row>
-              <Col>
-                <NavArrowLeft
-                  pokeId={parseInt(this.props.match.params.id) - 1}
-                />
-              </Col>
-              <Col>
-                <h1 align='center'>{pokemonDisplay?.name}</h1>
-              </Col>
-              <Col>
-                <NavArrowRight
-                  pokeId={parseInt(this.props.match.params.id) + 1}
-                />
-              </Col>
+              <img
+                width='50%'
+                className='mr-auto'
+                src={`https://res.cloudinary.com/aldencloud/image/upload/v1584876602/pokemonpng/poke-${this.props.match.params.id}.png`}
+                alt='Generic placeholder'
+                style={{ margin: 'auto' }}
+              />
             </Row>
-            <Hr />
-          </EmptyDiv>
-          <EmptyDiv>
-            <PokemonType type={pokemonDisplay?.type} />
-          </EmptyDiv>
-          <HollowDiv>
-            <Row>
-              {this.createRowCol(pokemonDisplay?.height, 'Height')}
-              {this.createRowCol(pokemonDisplay?.id, 'Number')}
-              {this.createRowCol(pokemonDisplay?.weight, 'Weight')}
-            </Row>
-          </HollowDiv>
-          <HollowDiv>
-            <h5 style={{ textAlign: 'justify' }}>{flavourText?.flavor_text}</h5>
-          </HollowDiv>
-          <FilledDiv>
-            <Stats stats={this.state?.pokeApiData?.stats} />
-          </FilledDiv>
-          <FilledDiv>
-            <Weakness weaknesses={pokemonDisplay?.weaknesses} />
-          </FilledDiv>
-          <FilledDiv>
-            <Evolutions
-              pokeDisplay={pokemonDisplay}
-              imageId={this.props.match.params.id}
-            />
-          </FilledDiv>
-        </FadeIn>
-      </Container>
+            <EmptyDiv>
+              <Hr />
+              <Row>
+                <Col>
+                  <NavArrowLeft
+                    pokeId={parseInt(this.props.match.params.id) - 1}
+                  />
+                </Col>
+                <Col>
+                  <h1 align='center'>{pokemonDisplay?.name}</h1>
+                </Col>
+                <Col>
+                  <NavArrowRight
+                    pokeId={parseInt(this.props.match.params.id) + 1}
+                  />
+                </Col>
+              </Row>
+              <Hr />
+            </EmptyDiv>
+            <EmptyDiv>
+              <PokemonType type={pokemonDisplay?.type} />
+            </EmptyDiv>
+            <HollowDiv>
+              <Row>
+                {this.createRowCol(pokemonDisplay?.height, 'Height')}
+                {this.createRowCol(pokemonDisplay?.id, 'Number')}
+                {this.createRowCol(pokemonDisplay?.weight, 'Weight')}
+              </Row>
+            </HollowDiv>
+            <HollowDiv>
+              <h5 style={{ textAlign: 'justify' }}>
+                {flavourText?.flavor_text}
+              </h5>
+            </HollowDiv>
+            <FilledDiv>
+              <Stats stats={this.state?.pokeApiData?.stats} />
+            </FilledDiv>
+            <FilledDiv>
+              <Weakness weaknesses={pokemonDisplay?.weaknesses} />
+            </FilledDiv>
+            <FilledDiv>
+              <Evolutions
+                pokeDisplay={pokemonDisplay}
+                imageId={this.props.match.params.id}
+              />
+            </FilledDiv>
+          </FadeIn>
+        </Container>
+      </Layout>
     );
   }
 
