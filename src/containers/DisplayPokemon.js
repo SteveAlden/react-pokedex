@@ -27,6 +27,7 @@ class DisplayPokemon extends Component {
 
   render() {
     // destructure pokemon from git api
+    let pokeApiData = this.state.pokeApiData;
     let { pokemon } = this.state.pokemonGitData || {};
     let pokemonDisplay;
     pokemonDisplay = pokemon?.find(
@@ -66,12 +67,12 @@ class DisplayPokemon extends Component {
             />
             <PokemonType type={pokemonDisplay?.type} />
             <Info
-              height={pokemonDisplay?.height}
-              id={pokemonDisplay?.id}
-              weight={pokemonDisplay?.weight}
+              height={pokeApiData?.height}
+              id={pokeApiData?.id}
+              weight={pokeApiData?.weight}
             />
             <Description flavourText={flavourText?.flavor_text} />
-            <Stats stats={this.state?.pokeApiData?.stats} />
+            <Stats stats={pokeApiData?.stats} />
             <Weakness weaknesses={pokemonDisplay?.weaknesses} />
             <Evolutions
               pokeDisplay={pokemonDisplay}

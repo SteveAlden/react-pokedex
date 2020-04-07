@@ -9,6 +9,7 @@ const Description = (props) => {
     </HollowDiv>
   );
 };
+
 const Info = (props) => {
   const createCol = (ele1, ele2) => {
     return (
@@ -21,9 +22,9 @@ const Info = (props) => {
   return (
     <HollowDiv>
       <Row>
-        {createCol(props?.height, 'Height')}
+        {createCol(parseFloat(props?.height) / 10 + ' m', 'Height')}
         {createCol(props?.id, 'Number')}
-        {createCol(props?.weight, 'Weight')}
+        {createCol(parseFloat(props?.weight) / 10 + ' kg', 'Weight')}
       </Row>
     </HollowDiv>
   );
