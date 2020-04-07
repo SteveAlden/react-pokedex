@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import PokeList from './containers/PokeList';
 import DisplayPokemon from './containers/DisplayPokemon';
-import NotFoundPage from './components/NotFound';
+import NotFoundPage from './containers/NotFound';
 class App extends Component {
   state = {
     pokemons: [],

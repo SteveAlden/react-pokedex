@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Container, Row } from 'react-bootstrap';
 import Evolutions from '../components/Evolutions';
 import Stats from '../components/Stats';
-import NotFoundPage from '../components/NotFound';
+import NotFoundPage from '../containers/NotFound';
 import { Weakness, PokemonType } from '../components/Chip';
 import FadeIn from 'react-fade-in';
 import { Name, Description, Info } from '../components/Description';
