@@ -37,7 +37,7 @@ const Name = (props) => {
           <NavArrowLeft pokeId={parseInt(props?.id) - 1} />
         </Col>
         <Col>
-          <h1 align='center' style={{ marginTop: '-5px' }}>
+          <h1 align='center' style={{ marginTop: '-6px' }}>
             {props?.name}
           </h1>
           <h6 style={{ marginTop: '-10px', marginBottom: '-5px' }}>
