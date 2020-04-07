@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Layout from '../layouts/Layout';
 import FadeIn from 'react-fade-in';
 import Pokemon from './Pokemon';
-import StackGrid, { transitions } from 'react-stack-grid';
-const { scaleDown } = transitions;
+import StackGrid from 'react-stack-grid';
 
 const PokeList = (props) => {
   let pokemon;
@@ -15,15 +14,8 @@ const PokeList = (props) => {
       <FadeIn>
         <StackGrid
           columnWidth={190}
-          // appear={scaleDown.appear}
-          // appeared={scaleDown.appeared}
-          // enter={scaleDown.enter}
-          // entered={scaleDown.entered}
-          // leaved={scaleDown.leaved}
           gutterWidth={15}
           gutterHeight={15}
-          // appearDelay={100}
-          // duration={200}
           enableSSR={true}
         >
           {pokemon?.map((p) => (

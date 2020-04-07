@@ -7,8 +7,6 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import Header from './components/layouts/Header';
-import Footer from './components/layouts/Footer';
 import PokeList from './components/pokemon/PokeList';
 import DisplayPokemon from './components/pokemon/DisplayPokemon';
 import NotFoundPage from './components/NotFound';
