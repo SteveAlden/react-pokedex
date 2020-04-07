@@ -1,7 +1,7 @@
 import React from 'react';
 import { Chip } from '@material-ui/core';
 
-const Chips = props => {
+const Chips = (props) => {
   return (
     <Chip
       size={props.size}
@@ -12,7 +12,7 @@ const Chips = props => {
   );
 };
 
-const getChipStyle = pokeType => {
+const getChipStyle = (pokeType) => {
   switch (pokeType) {
     case 'Bug':
       return '#C3D21F';
@@ -50,13 +50,15 @@ const getChipStyle = pokeType => {
       return '#C4C2DB';
     case 'Water':
       return '#56AEFF';
+    default:
+      return null;
   }
 };
-const Weakness = props => {
+const Weakness = (props) => {
   return (
     <>
       <h3>Weakness</h3>
-      {props?.weaknesses?.map(t => (
+      {props?.weaknesses?.map((t) => (
         <>
           <Chips size='small' label={t} />{' '}
         </>
@@ -65,10 +67,10 @@ const Weakness = props => {
   );
 };
 
-const PokemonType = props => {
+const PokemonType = (props) => {
   return (
     <>
-      {props?.type?.map(t => (
+      {props?.type?.map((t) => (
         <>
           <Chips size='medium' label={t} />{' '}
         </>
