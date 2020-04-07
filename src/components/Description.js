@@ -1,7 +1,7 @@
 import React from 'react';
-import { EmptyDiv, HollowDiv, Hr } from '../helpers/Elements';
+import { EmptyDiv, HollowDiv, Hr } from './Elements';
 import { Row, Col } from 'react-bootstrap';
-import { NavArrowLeft, NavArrowRight } from '../helpers/NavArrows';
+import { NavArrowLeft, NavArrowRight } from './NavArrows';
 const Description = (props) => {
   return (
     <HollowDiv>

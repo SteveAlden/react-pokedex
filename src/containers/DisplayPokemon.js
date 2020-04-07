@@ -3,18 +3,19 @@ import Layout from '../layouts/Layout';
 import styled from 'styled-components/macro';
 import axios from 'axios';
 import { Container, Row } from 'react-bootstrap';
-import Evolutions from '../helpers/Evolutions';
-import Stats from '../helpers/Stats';
-import NotFoundPage from '../../components/NotFound';
-import { Weakness, PokemonType } from '../helpers/Chip';
+import Evolutions from '../components/Evolutions';
+import Stats from '../components/Stats';
+import NotFoundPage from '../components/NotFound';
+import { Weakness, PokemonType } from '../components/Chip';
 import FadeIn from 'react-fade-in';
-import { Name, Description, Info } from '../helpers/Description';
+import { Name, Description, Info } from '../components/Description';
 
 const Image = styled.img`
   margin: auto;
   width: 50%;
   display: block;
 `;
+
 class DisplayPokemon extends Component {
   constructor(props) {
     super(props);
@@ -25,12 +26,7 @@ class DisplayPokemon extends Component {
       speciesDescription: {},
       flavourText: {},
       dataLoaded: false,
-      evWidth: '30%',
       textColor: '#898989',
-      bodyColor: '#252525',
-      mediaColor: '#363636',
-      bgColor: 'rgb(25, 25, 25)',
-      border: '5px solid rgb(15, 15, 15)',
     };
   }
 

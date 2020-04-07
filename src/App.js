@@ -7,8 +7,8 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import PokeList from './components/pokemon/PokeList';
-import DisplayPokemon from './components/pokemon/DisplayPokemon';
+import PokeList from './containers/PokeList';
+import DisplayPokemon from './containers/DisplayPokemon';
 import NotFoundPage from './components/NotFound';
 class App extends Component {
   state = {

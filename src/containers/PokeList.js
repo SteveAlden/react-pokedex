@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../layouts/Layout';
 import FadeIn from 'react-fade-in';
-import Pokemon from './Pokemon';
+import Pokemon from '../components/Pokemon';
 import StackGrid from 'react-stack-grid';
 
 const PokeList = (props) => {
