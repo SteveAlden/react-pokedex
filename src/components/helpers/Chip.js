@@ -1,6 +1,6 @@
 import React from 'react';
 import { Chip } from '@material-ui/core';
-
+import { FilledDiv, EmptyDiv } from './Elements';
 const Chips = (props) => {
   return (
     <Chip
@@ -56,26 +56,26 @@ const getChipStyle = (pokeType) => {
 };
 const Weakness = (props) => {
   return (
-    <>
+    <FilledDiv>
       <h3>Weakness</h3>
       {props?.weaknesses?.map((t) => (
         <>
           <Chips size='small' label={t} />{' '}
         </>
       ))}
-    </>
+    </FilledDiv>
   );
 };
 
 const PokemonType = (props) => {
   return (
-    <>
+    <EmptyDiv>
       {props?.type?.map((t) => (
         <>
           <Chips size='medium' label={t} />{' '}
         </>
       ))}
-    </>
+    </EmptyDiv>
   );
 };
 export { PokemonType, Weakness };

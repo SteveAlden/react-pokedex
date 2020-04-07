@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-
+import { FilledDiv } from './Elements';
 const Stats = (props) => {
   const getStatName = (name) => {
     switch (name) {
@@ -56,10 +56,10 @@ const Stats = (props) => {
     stat = props?.stats;
   }
   return (
-    <div>
+    <FilledDiv>
       <h3 style={{ marginBottom: '20px' }}>Base Stats</h3>
       {stat?.map((s) => getDiv(s))}
-    </div>
+    </FilledDiv>
   );
 };
 

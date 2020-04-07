@@ -9,7 +9,6 @@ class Pokemon extends Component {
 
   render() {
     const pokemon = this.props.poke;
-    console.log(pokemon);
     return (
       <Link style={{ textDecoration: 'none' }} to={`/pokemon/${pokemon}`}>
         <img

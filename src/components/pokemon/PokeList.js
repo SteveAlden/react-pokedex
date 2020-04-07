@@ -17,9 +17,10 @@ const PokeList = (props) => {
           gutterWidth={15}
           gutterHeight={15}
           enableSSR={true}
+          height=''
         >
           {pokemon?.map((p) => (
-            <Pokemon poke={p} />
+            <Pokemon key={p} poke={p} />
           ))}
         </StackGrid>
       </FadeIn>
