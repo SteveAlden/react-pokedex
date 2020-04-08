@@ -12,6 +12,10 @@
 
 Project is: _in progress_
 
+### Todos
+
+- Add different color themes
+
 ## Inspiration
 
 Project based on PokeApi
