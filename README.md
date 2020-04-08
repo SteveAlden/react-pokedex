@@ -2,6 +2,7 @@
 
 > This project is a generation one pokedex built using react.
 > [Steve's Pokédex](https://pokedex-neo.netlify.com/)
+> ![alt-text](https://res.cloudinary.com/aldencloud/image/upload/v1585557161/ball-master.png)
 
 ## Technologies
 
