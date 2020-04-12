@@ -32,14 +32,15 @@ const Info = (props) => {
 const Name = (props) => {
   return (
     <EmptyDiv>
-      <Hr />
+      {/* <Hr /> */}
+      <br />
       <Row>
         <Col>
           <NavArrowLeft pokeId={parseInt(props?.id) - 1} />
         </Col>
         <Col>
           <h1 align='center' style={{ marginTop: '-6px' }}>
-            {props?.name}
+            {props?.name?.toUpperCase()}
           </h1>
           <h6 style={{ marginTop: '-10px', marginBottom: '-5px' }}>
             {props?.genus}
@@ -49,7 +50,7 @@ const Name = (props) => {
           <NavArrowRight pokeId={parseInt(props?.id) + 1} />
         </Col>
       </Row>
-      <Hr />
+      {/* <Hr /> */}
     </EmptyDiv>
   );
 };

@@ -15,6 +15,9 @@ const Image = styled.img`
   margin-bottom: 10px;
   width: 50%;
   display: block;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.1)));
+}
+
 `;
 const textColor = '#898989';
 class DisplayPokemon extends Component {
@@ -61,7 +64,7 @@ class DisplayPokemon extends Component {
               src={`https://res.cloudinary.com/aldencloud/image/upload/v1584876602/pokemonpng/poke-${this.props.match.params.id}.png`}
             />
             <Name
-              name={pokemonDisplay?.name}
+              name={pokeApiData?.name}
               genus={genus?.genus}
               id={this.props.match.params.id}
             />
