@@ -15,7 +15,7 @@ const Image = styled.img`
   margin-bottom: 10px;
   width: 50%;
   display: block;
-  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.1)));
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent) , to(rgba(250, 250, 250, 0.1)));
 }
 
 `;

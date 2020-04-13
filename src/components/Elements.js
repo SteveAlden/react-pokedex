@@ -9,7 +9,7 @@ const HollowElement = styled(EmptyElement)`
   padding: 2vh 5vw 2vh 5vw;
   border-radius: 12px;
   border: 5px solid rgb(25, 25, 25);
-  background-color: none;
+  background-color: rgb(20, 20, 20);
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
 `;
 const FilledElement = styled(EmptyElement)`
