@@ -20,7 +20,6 @@ const Image = styled.img`
 
 `;
 const textColor = '#898989';
-const pokemonJson = [];
 class DisplayPokemon extends Component {
   state = {
     pokemonNumber: this.props.match.params.id,
@@ -126,7 +125,7 @@ class DisplayPokemon extends Component {
           preEvolution: pokemonDisplay?.prev_evolution,
           postEvolution: pokemonDisplay?.next_evolution,
           baseHappiness: base_happiness,
-          captureRate: capture_rate || null,
+          captureRate: capture_rate,
           habitat: habitat?.name,
         };
         this.setState({ pokemonData: pokemonObj });
