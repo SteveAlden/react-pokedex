@@ -3,9 +3,9 @@ import Evolution from './Evolution';
 import { FilledDiv } from './Elements';
 
 const Evolutions = (props) => {
-  let preEv = props?.pokeDisplay?.prev_evolution;
+  let preEv = props?.preEvolution;
 
-  let nexEv = props?.pokeDisplay?.next_evolution;
+  let nexEv = props?.postEvolution;
 
   if (preEv) {
     if (nexEv) {

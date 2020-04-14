@@ -22,19 +22,19 @@ const Stats = (props) => {
   };
 
   const getDiv = (s) => {
-    let baseStat = s?.base_stat;
+    let baseStat = s?.baseStat;
     return (
       <>
         <Row>
           <Col align='left' className='col-sm-1 col-md-2'>
-            <h5>{getStatName(s?.stat?.name)}</h5>
+            <h5>{getStatName(s?.statName)}</h5>
           </Col>
           <Col className='col-sm-11 col-md-10' align='left'>
             <div
               class='progress'
               style={{ height: '20px', backgroundColor: 'rgb(25, 25, 25)' }}
             >
-              {s?.base_stat}
+              {s?.baseStat}
               <div
                 class='progress-bar'
                 style={{
