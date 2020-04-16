@@ -3,9 +3,8 @@ import Evolution from './Evolution';
 import { FilledDiv } from './Elements';
 
 const Evolutions = (props) => {
-  let preEv = props?.pokeDisplay?.prev_evolution;
-
-  let nexEv = props?.pokeDisplay?.next_evolution;
+  let preEv = props?.preEvolution;
+  let nexEv = props?.postEvolution;
 
   if (preEv) {
     if (nexEv) {
@@ -30,7 +29,6 @@ const Evolutions = (props) => {
           {preEv?.map((t) => (
             <Evolution imageid={t?.num?.replace(/^0+/, '')} />
           ))}
-
           <Evolution imageid={props.imageId} />
         </FilledDiv>
       );

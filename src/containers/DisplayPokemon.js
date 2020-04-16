@@ -26,23 +26,11 @@ class DisplayPokemon extends Component {
     pokemonGitData: {},
     pokeApiData: {},
     species: {},
+    pokemonData: {},
   };
 
   render() {
-    // destructure pokemon from git api
-    let pokeApiData = this.state.pokeApiData;
-    let { pokemon } = this.state.pokemonGitData || {};
-    let pokemonDisplay;
-    pokemonDisplay = pokemon?.find(
-      (poke) => poke.id == this.props.match.params.id
-    );
-    // destructure description from species
-    let { flavor_text_entries, genera } = this.state?.species || {};
-    let flavourText = flavor_text_entries?.find(
-      (text) =>
-        (text?.language?.name === 'en') & (text?.version?.name === 'omega-ruby')
-    );
-    let genus = genera?.find((g) => g?.language?.name === 'en');
+    let pokemonData = this.state.pokemonData;
     if (
       isNaN(this.props.match.params.id) |
       (this.props.match.params.id > 151) |
@@ -64,21 +52,22 @@ class DisplayPokemon extends Component {
               src={`https://res.cloudinary.com/aldencloud/image/upload/v1584876602/pokemonpng/poke-${this.props.match.params.id}.png`}
             />
             <Name
-              name={pokeApiData?.name}
-              genus={genus?.genus}
+              name={pokemonData?.name}
+              genus={pokemonData?.genus}
               id={this.props.match.params.id}
             />
-            <PokemonType type={pokemonDisplay?.type} />
+            <PokemonType type={pokemonData?.type} />
             <Info
-              height={pokeApiData?.height}
-              id={pokeApiData?.id}
-              weight={pokeApiData?.weight}
+              height={pokemonData?.height}
+              id={pokemonData?.id}
+              weight={pokemonData?.weight}
             />
-            <Description flavourText={flavourText?.flavor_text} />
-            <Stats stats={pokeApiData?.stats} />
-            <Weakness weaknesses={pokemonDisplay?.weaknesses} />
+            <Description flavourText={pokemonData?.description} />
+            <Stats stats={pokemonData?.stats} />
+            <Weakness weaknesses={pokemonData?.weakness} />
             <Evolutions
-              pokeDisplay={pokemonDisplay}
+              preEvolution={pokemonData?.preEvolution}
+              postEvolution={pokemonData?.postEvolution}
               imageId={this.props.match.params.id}
             />
           </FadeIn>
@@ -94,14 +83,55 @@ class DisplayPokemon extends Component {
   }
   updateComponent = (newId) => {
     let pokeApiUrl = `https://pokeapi.co/api/v2/pokemon/${newId}`;
+    let pokemonObj;
     axios.get(pokeApiUrl).then((responses) => {
       const responseTwo = responses.data;
       let { species } = responseTwo;
       this.setState({ pokeApiData: responseTwo });
-      axios
-        .get(species.url)
-        .then((res) => this.setState({ species: res.data }));
+      axios.get(species.url).then((res) => {
+        this.setState({ species: res.data });
+
+        let pokeApiData = this.state.pokeApiData;
+        let { pokemon } = this.state.pokemonGitData || {};
+        let pokemonDisplay;
+        pokemonDisplay = pokemon?.find(
+          (poke) => poke.id == this.props.match.params.id
+        );
+        // destructure description from species
+        let { flavor_text_entries, genera } = this.state?.species || {};
+        let flavourText = flavor_text_entries?.find(
+          (text) =>
+            (text?.language?.name === 'en') &
+            (text?.version?.name === 'omega-ruby')
+        );
+        let genus = genera?.find((g) => g?.language?.name === 'en');
+
+        let { base_happiness, capture_rate, habitat } =
+          this.state?.species || {};
+        let stata = [];
+        let stat1 = pokeApiData?.stats?.map((s) =>
+          stata.push({ statName: s?.stat?.name, baseStat: s?.base_stat })
+        );
+        pokemonObj = {
+          id: pokemonDisplay?.id,
+          name: pokemonDisplay?.name,
+          height: pokemonDisplay?.height,
+          weight: pokemonDisplay?.weight,
+          genus: genus?.genus,
+          description: flavourText?.flavor_text,
+          stats: stata,
+          type: pokemonDisplay?.type,
+          weakness: pokemonDisplay?.weaknesses,
+          preEvolution: pokemonDisplay?.prev_evolution,
+          postEvolution: pokemonDisplay?.next_evolution,
+          baseHappiness: base_happiness,
+          captureRate: capture_rate,
+          habitat: habitat?.name,
+        };
+        this.setState({ pokemonData: pokemonObj });
+      });
     });
+    // .then(this.setState({ pokemonData: pokemonObj }));
   };
   componentDidMount() {
     let pokeGitUrl =
