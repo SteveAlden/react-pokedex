@@ -75,7 +75,7 @@ class Pokemon extends Component {
       boxShadow: this.state.boxShadow,
       transition: 'transform .2s',
       transform: this.state.transform,
-      borderRadius: '20px',
+      borderRadius: '12px',
     };
   };
 }
