@@ -19,6 +19,10 @@ class Pokemon extends Component {
       <Link style={{ textDecoration: 'none' }} to={`/pokemon/${pokemonNum}`}>
         <div style={this.getStyle()}>
           <Image
+            // style={{
+            //   webkitBoxReflect:
+            //     'below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.1)))',
+            // }}
             cloudName='aldencloud'
             publicId={`pokemontrimtop/poke-${pokemonNum}.png`}
             width='100%'
@@ -66,7 +70,7 @@ class Pokemon extends Component {
   };
   getStyle = () => {
     return {
-      paddingTop: '40px',
+      paddingTop: '20px',
       background: 'rgb(36,36,36)',
       boxShadow: this.state.boxShadow,
       transition: 'transform .2s',
