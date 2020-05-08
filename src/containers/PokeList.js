@@ -13,8 +13,8 @@ const PokeList = (props) => {
     <Layout>
       <FadeIn>
         <StackGrid
-          columnWidth={190}
-          gutterWidth={7}
+          columnWidth={194}
+          gutterWidth={8}
           gutterHeight={15}
           enableSSR={true}
           height=''
