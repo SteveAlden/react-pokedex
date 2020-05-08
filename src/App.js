@@ -36,7 +36,10 @@ class App extends Component {
               render={(props) => (
                 <>
                   <div style={{ marginTop: '120px' }}>
-                    <PokeList pokemons={this.state.pokemons} />
+                    <PokeList
+                      pokemonData={this.state.pokemonData}
+                      pokemons={this.state.pokemons}
+                    />
                   </div>
                 </>
               )}

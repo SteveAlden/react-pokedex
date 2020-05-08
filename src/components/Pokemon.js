@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Image } from 'cloudinary-react';
 
 class Pokemon extends Component {
   state = {
@@ -8,12 +9,32 @@ class Pokemon extends Component {
   };
 
   render() {
-    const pokemon = this.props.poke;
+    const pokemonNum = this.props?.poke;
+    // const pokemonData = this.props?.pokemonData;
+
+    // let { pokemon } = pokemonData || {};
+    // let pokemonDisplay;
+    // pokemonDisplay = pokemon?.find((poke) => poke.id == pokemonNum);
     return (
-      <Link style={{ textDecoration: 'none' }} to={`/pokemon/${pokemon}`}>
-        <img
+      <Link style={{ textDecoration: 'none' }} to={`/pokemon/${pokemonNum}`}>
+        <div style={this.getStyle()}>
+          <Image
+            cloudName='aldencloud'
+            publicId={`pokemontrimtop/poke-${pokemonNum}.png`}
+            width='100%'
+            onMouseOver={this.onMouseOver}
+            onMouseOut={this.onMouseOut}
+            onTouchStart={this.onMouseOver}
+            onTouchEnd={this.onMouseOut}
+          />
+          {/* <div>{pokemonDisplay?.name}</div> */}
+        </div>
+        {/* <div> */}
+        {/* <img
           alt=''
-          src={`https://res.cloudinary.com/aldencloud/image/upload/v1581096275/pokemon/poke-${pokemon}.png`}
+          // src={`https://res.cloudinary.com/aldencloud/image/upload/v1584876599/pokemonpng/poke-${pokemon}.png`}
+          src={`https://res.cloudinary.com/aldencloud/image/upload/v1585040966/pokemontrim/poke-${pokemon}.png`}
+          // src={`https://res.cloudinary.com/aldencloud/image/upload/v1581096275/pokemon/poke-${pokemon}.png`}
           // src={`https://ik.imagekit.io/alden/poke/tr:w-0.3/${pokemon}.png`}
           // src={`${process.env.PUBLIC_URL}/assets/pokemonImages/${pokemon}.png`}
           style={this.getStyle()}
@@ -22,7 +43,12 @@ class Pokemon extends Component {
           onMouseOut={this.onMouseOut}
           onTouchStart={this.onMouseOver}
           onTouchEnd={this.onMouseOut}
-        />
+        /> */}
+        {/* hello there
+          <br />
+          yoyo
+          <br /> */}
+        {/* </div> */}
       </Link>
     );
   }
@@ -40,6 +66,8 @@ class Pokemon extends Component {
   };
   getStyle = () => {
     return {
+      paddingTop: '40px',
+      background: 'rgb(36,36,36)',
       boxShadow: this.state.boxShadow,
       transition: 'transform .2s',
       transform: this.state.transform,

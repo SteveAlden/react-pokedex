@@ -84,10 +84,10 @@ class DisplayPokemon extends Component {
   updateComponent = (newId) => {
     let pokeApiUrl = `https://pokeapi.co/api/v2/pokemon/${newId}`;
     let pokemonObj;
-    axios.get(pokeApiUrl).then((responses) => {
-      const responseTwo = responses.data;
-      let { species } = responseTwo;
-      this.setState({ pokeApiData: responseTwo });
+    axios.get(pokeApiUrl).then((res) => {
+      const response = res.data;
+      let { species } = response;
+      this.setState({ pokeApiData: response });
       axios.get(species.url).then((res) => {
         this.setState({ species: res.data });
 
@@ -131,7 +131,6 @@ class DisplayPokemon extends Component {
         this.setState({ pokemonData: pokemonObj });
       });
     });
-    // .then(this.setState({ pokemonData: pokemonObj }));
   };
   componentDidMount() {
     let pokeGitUrl =

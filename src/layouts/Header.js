@@ -8,7 +8,7 @@ const Header = () => {
         fixed='top'
         style={{
           backdropFilter: 'blur(10px) saturate(150%)',
-          backgroundColor: 'rgba(20,20,20,0.5)'
+          backgroundColor: 'rgba(20,20,20,0.5)',
         }}
         variant='dark'
       >

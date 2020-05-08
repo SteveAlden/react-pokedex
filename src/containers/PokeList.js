@@ -20,7 +20,7 @@ const PokeList = (props) => {
           height=''
         >
           {pokemon?.map((p) => (
-            <Pokemon key={p} poke={p} />
+            <Pokemon key={p} poke={p} pokemonData={props.pokemonData} />
           ))}
         </StackGrid>
       </FadeIn>
