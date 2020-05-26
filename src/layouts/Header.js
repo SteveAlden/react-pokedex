@@ -3,19 +3,18 @@ import { Navbar, Nav } from 'react-bootstrap';
 
 const Header = () => {
   return (
-    // <div className='center-navbar'>
     <Navbar
       fixed='top'
       style={{
         backdropFilter: 'blur(10px) saturate(150%)',
-        backgroundColor: 'rgba(20,20,20,0.5)',
+        backgroundColor: 'rgba(0,0,0,0.2)',
+        // backgroundColor: 'rgba(20,20,20,0.2)',
       }}
-      variant='dark'
     >
       <Nav.Link
         href='/home'
         style={{
-          fontSize: '22px',
+          fontSize: '23px',
           textDecoration: 'none',
           color: 'white',
         }}
@@ -23,14 +22,12 @@ const Header = () => {
         <img
           alt=''
           src='https://res.cloudinary.com/aldencloud/image/upload/v1585557161/ball-master.png'
-          height='30'
-          className='d-inline-block'
+          height='35'
         />
         {'   '}
         Steve's Pokédex
       </Nav.Link>
     </Navbar>
-    // </div>
   );
 };
 
