@@ -7,14 +7,15 @@ const Header = () => {
       fixed='top'
       style={{
         backdropFilter: 'blur(10px) saturate(150%)',
-        backgroundColor: 'rgba(0,0,0,0.2)',
-        // backgroundColor: 'rgba(20,20,20,0.2)',
+        backgroundColor: 'rgba(20,20,20,0.2)',
+        boxShadow: '0px 5px 10px 0px rgba(0, 0, 0, 0.4)',
       }}
     >
       <Nav.Link
         href='/home'
         style={{
-          fontSize: '23px',
+          fontStyle: 'bold',
+          fontSize: '25px',
           textDecoration: 'none',
           color: 'white',
         }}
