@@ -14,19 +14,20 @@ const Header = () => {
       <Nav.Link
         href='/home'
         style={{
-          fontStyle: 'bold',
-          fontSize: '25px',
           textDecoration: 'none',
           color: 'white',
+          padding: '8px 0px 0px 10px',
         }}
       >
-        <img
-          alt=''
-          src='https://res.cloudinary.com/aldencloud/image/upload/v1585557161/ball-master.png'
-          height='35'
-        />
-        {'   '}
-        Steve's Pokédex
+        <h3>
+          <img
+            alt=''
+            src='https://res.cloudinary.com/aldencloud/image/upload/v1585557161/ball-master.png'
+            height='35'
+          />
+          {'   '}
+          Steve's Pokédex
+        </h3>
       </Nav.Link>
     </Navbar>
   );
